@@ -41,6 +41,10 @@ The skills read shared context from `~/.claude/skills/seo-references/core.md`:
 
 Designed around MCP servers for Semrush, Google Search Console, and GA4; several skills also use a stealth browser ([Camoufox](https://github.com/daijro/camoufox)) for SERP validation. Every skill degrades gracefully when a data source is unavailable; the failure-handling order lives in `seo-references/core.md`.
 
+## Related
+
+- [ai-citation-patterns](https://github.com/abouchard11/ai-citation-patterns) — my dated, sourced research on how AI answer engines select and cite content; the GEO companion to this suite.
+
 ## Credits
 
 Parts of the bottom-of-funnel approach were informed by Edward Sturm's publicly taught Compact Keywords framework ([edwardsturm.com](https://edwardsturm.com)). The skill engineering, tool orchestration, and deliverable formats are original work.
