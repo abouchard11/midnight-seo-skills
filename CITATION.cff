@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "midnight-seo-skills"
+abstract: >-
+  A Claude Code skill suite for portfolio SEO operations: audits, topical maps, link
+  acquisition, local pack strategy, GA4 telemetry, and rapid indexing.
+authors:
+  - family-names: "Bouchard"
+    given-names: "Alex"
+    email: "alex@midnightdev.dev"
+    affiliation: "MidnightDev"
+    website: "https://midnightdev.dev"
+type: software
+repository-code: "https://github.com/abouchard11/midnight-seo-skills"
+url: "https://github.com/abouchard11/midnight-seo-skills"
+license: MIT
+date-released: 2026-07-22
+keywords:
+  - "seo"
+  - "geo"
+  - "claude-code"
+  - "agent-skills"
+  - "ga4"
