@@ -44,6 +44,7 @@ Designed around MCP servers for Semrush, Google Search Console, and GA4; several
 ## Related
 
 - [ai-citation-patterns](https://github.com/abouchard11/ai-citation-patterns) — my dated, sourced research on how AI answer engines select and cite content; the GEO companion to this suite.
+- [claude-desktop-skills](https://github.com/abouchard11/claude-desktop-skills) — sibling skill suite for knowledge-work prompts; different layer than this SEO ops pack.
 
 ## Credits
 
