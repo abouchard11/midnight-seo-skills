@@ -50,6 +50,6 @@ Designed around MCP servers for Semrush, Google Search Console, and GA4; several
 
 Parts of the bottom-of-funnel approach were informed by Edward Sturm's publicly taught Compact Keywords framework ([edwardsturm.com](https://edwardsturm.com)). The skill engineering, tool orchestration, and deliverable formats are original work.
 
-## License
+## Rights
 
-MIT
+**Proprietary — all rights reserved. No license is granted.** See [LICENSE](LICENSE).
