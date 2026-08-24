@@ -58,6 +58,7 @@ Based on the topical map structure (13 pages per silo):
 [] Submit URL in GSC via URL Inspection
 [] Ping sitemap URL
 [] Share on 2 social platforms (signal amplification — see /signal)
+[] If this host is a SHIP/MAYBE source, confirm the Preferred Sources popup is on the page (see /preferred-source). Skip for tools and /blog paths.
 [] Add internal link from hub page to the new page
 [] Verify rendering in Mobile-Friendly Test
 [] Check indexing status after 48 hours
