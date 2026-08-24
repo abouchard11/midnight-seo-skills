@@ -12,6 +12,7 @@ Built and maintained by [Alex Bouchard](https://github.com/abouchard11) ([Midnig
 | `topical-map` | Generates the 13-page architecture per domain: 1 hub, 3 sub-hubs, 9 purchase-intent pages, prioritized by volume x CPC |
 | `indexer` | GSC rapid-indexing protocol: sitemap hygiene, URL inspection workflow, post-publish checklist |
 | `signal` | Social distribution plan for new pages: platform-specific posts, scheduling, tracking |
+| `preferred-source` | Google Preferred Sources: eligibility, JS popup embed, placement. Issues a SHIP / MAYBE / SKIP verdict so the button is not wallpapered onto tools, games, or `/blog` paths |
 | `hunter` | Backlink gap analysis: referring-domain audit, link targets, linkable-asset specs |
 | `kilo` | Executable link acquisition: outreach sequences, broken-link targets, resource-page submissions, journalist pitches |
 | `parasite` | Parasite SEO: publish on high-authority platforms to capture SERPs a new domain cannot win head-to-head |
