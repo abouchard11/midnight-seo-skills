@@ -122,6 +122,7 @@ Use CamoFox when a skill needs to see a **competitor's actual page content** tha
 | `/parasite` | Scrape Reddit/Medium/Quora pages currently ranking for target keywords to analyze content format, engagement, and platform norms | When identifying what parasite content format works for each platform — see what's actually ranking |
 | `/whale` | Check what's currently live on candidate domain names | When validating whether a domain is parked, active, or expired |
 | `/signal` | Verify social posts and profile pages are rendering correctly after posting | Optional — only if amplification verification is requested |
+| `/preferred-source` | Confirm `publisher.js` / the preferred-source div is already on the live host | After a SHIP or MAYBE verdict — skip entirely on SKIP hosts |
 
 **Skills that do NOT need CamoFox:** `neural-audit` (API data only), `ga4` (GA4 event audit), `indexer` (GSC data), `map-flap` (GBP/local strategy from API data).
 
