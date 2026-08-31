@@ -66,9 +66,11 @@ If the probe cannot run:
 - Do not fake flags.
 - `/geo` may continue only if the operator explicitly accepts an unprobed run. Record that in the Graphiti summary.
 
+Mode A never verifies bot identity. `geo_probe.py` spoofs UAs from the probing machine on purpose. Vendor-range checks live only in `drain_parser.py` (Mode B). "Identity UNVERIFIABLE" is therefore true of every Mode A token, including OAI-SearchBot. Do not key a handshake on `ip_ranges`.
+
 `OAI-AdsBot` (OpenAI docs, `OAI-AdsBot/1.0`) is advertising verification for pages submitted as ChatGPT ads. Class: advertising. Registry: `category: advertising`, `probe: false`. It is not retrieval and not user_fetch. Blocking it does not STOP `/geo`.
 
-Amazonbot is retrieval in the registry and publishes **no** IP range (`ip_ranges: null`). A Mode A Amazonbot differential cannot be vendor-range verified in either direction. Label identity **UNVERIFIABLE**. It is not a clean true positive.
+Key `BOT_DIFFERENTIAL` on **citation surface**, not on whether the vendor publishes IPs. `/geo` measures OpenAI, Anthropic, Perplexity, Google, and Microsoft. Amazonbot grounds Alexa / Rufus, not those engines. Meta, ByteDance, and Apple tokens are the same class of off-surface retrieval. A Mode A differential on those UAs is still real (the origin treated that string differently). It does not STOP citation work.
 
 ## Step 3: Confirm when required — pick the instrument
 
@@ -83,7 +85,7 @@ python3 scripts/drain_parser.py access.log --format combined --verify --out ./au
 python3 scripts/drain_parser.py logs/*.ndjson --out ./audit-results --verify
 ```
 
-`--verify` is a no-op for bots with no published range (Amazonbot, several Anthropic tokens except the pinned ClaudeBot CIDR). Do not treat `verification=unknown` as confirmed identity.
+`--verify` is Mode B only. It is a no-op for bots with no published range. Do not treat `verification=unknown` as confirmed identity, and do not import that property back into a Mode A handshake.
 
 Vercel runtime logs are not Mode B. Do not treat `vercel___get_runtime_logs` as origin logs.
 
@@ -103,7 +105,7 @@ First owned result on this instrument (readablebyai.com, 2026-08-31, operator Po
 4. Never a drain configured as **Projects: All**. Receiver excludes itself.
 5. Never the tombstone at `readablebyai.com/api/drain` (HTTP 410).
 
-No origin log and no owned RBA events: print **UNCONFIRMED** and still STOP `/geo` citation work if the flag is CRITICAL on a retrieval bot whose identity is vendor-verifiable. For Amazonbot / other `ip_ranges: null` tokens, keep the Mode A lead but do not sell it as a confirmed block.
+No origin log and no owned RBA events: print **UNCONFIRMED**. STOP `/geo` only when the flag is CRITICAL on a retrieval or user_fetch bot whose surface `/geo` measures (OpenAI, Anthropic, Perplexity, Google, Microsoft). Amazon / Meta / ByteDance / Apple differentials stay CONTINUE WITH FIXES on citation-surface grounds.
 
 ## Step 4: Suite handshake
 
@@ -111,9 +113,9 @@ Issue one verdict. Use flag codes from `geo-crawl-audit/references/interpreting.
 
 | Verdict | When | What the rest of the suite may do |
 |---|---|---|
-| **STOP** | `CSR_SHELL`; `BOT_DIFFERENTIAL` on retrieval or user_fetch when the bot has a published range or pinned CIDR (even UNCONFIRMED); `ROBOTS_BLOCKS` on retrieval or user_fetch from engine SHA `de557923`+; baseline not a normal 200 (inconclusive) | No prompt matrix. No passage rewrite sold as GEO. Fix the gate. Re-probe. |
-| **CONTINUE WITH FIXES** | `SLOW_TTFB` / `TTFB_VARIANCE`; `THIN_HTML`; `NO_SITEMAP` / `NO_ROBOTS`; training-only `ROBOTS_BLOCKS`; Amazonbot-only differential with identity UNVERIFIABLE | `/geo` and `/aeo` may run. First Recommended Action is the probe fix or a Mode B origin-log pull, not a new blog. |
-| **CLEAR** | Score 85–100, no CRITICAL retrieval flags — or Instrument 2 shows verified 2xx on retrieval tokens | `/geo` proceeds normally. |
+| **STOP** | `CSR_SHELL`; `BOT_DIFFERENTIAL` on retrieval or user_fetch for bots whose surface `/geo` measures (OpenAI, Anthropic, Perplexity, Google, Microsoft), even UNCONFIRMED; `ROBOTS_BLOCKS` on those same tokens from engine SHA `de557923`+; baseline not a normal 200 (inconclusive) | No prompt matrix. No passage rewrite sold as GEO. Fix the gate. Re-probe. |
+| **CONTINUE WITH FIXES** | `SLOW_TTFB` / `TTFB_VARIANCE`; `THIN_HTML`; `NO_SITEMAP` / `NO_ROBOTS`; training-only `ROBOTS_BLOCKS`; `BOT_DIFFERENTIAL` on Amazon / Meta / ByteDance / Apple tokens | `/geo` and `/aeo` may run. First Recommended Action is the probe fix or a Mode B origin-log pull, not a new blog. |
+| **CLEAR** | Score 85–100, no CRITICAL flags on the `/geo` citation surface — or Instrument 2 shows verified 2xx on those tokens | `/geo` proceeds normally. |
 
 Training-bot blocks (`GPTBot`, `ClaudeBot`, `Google-Extended`, …) are a rights choice. They do not by themselves STOP citation work. Say so.
 Advertising-class tokens (`OAI-AdsBot`) do not STOP citation work.
