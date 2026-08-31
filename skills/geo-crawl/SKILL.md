@@ -7,7 +7,7 @@ argument-hint: "<domain>"
 
 # GEO Crawl — input gate
 
-This skill does **not** own the probe. The engine, bot registry, log parser, and flag playbook live in [geo-crawl-audit](https://github.com/abouchard11/geo-crawl-audit) (ReadableByAI, [readablebyai.com](https://readablebyai.com)). Prefer engine SHA `de557923` or later (PR #3, 2026-08-31): RFC 9309 Allow/Disallow tie-break, failed-baseline scoring, CSR_SHELL scoped to the baseline body. `ROBOTS_BLOCKS` from before that merge is suspect.
+This skill does **not** own the probe. The engine, bot registry, log parser, and flag playbook live in [geo-crawl-audit](https://github.com/abouchard11/geo-crawl-audit) (ReadableByAI, [readablebyai.com](https://readablebyai.com)). Prefer engine SHA `de557923` or later (PR #3, 2026-08-31): RFC 9309 Allow/Disallow tie-break, failed-baseline scoring, CSR_SHELL scoped to the baseline body. The tie-break was a real test failure. It flipped no live `/geo-crawl` STOP in practice.
 
 Do not copy `geo_probe.py`, `drain_parser.py`, or `bots.json` into this repo. Do not invent a second robots.txt checklist. Run that skill, then translate the flags into a STOP / CONTINUE verdict for the rest of this suite.
 
@@ -93,7 +93,7 @@ LiteSpeed hosts (example: `htxpermitfix.com`) **are** the right class for this i
 
 Use when the host is already on the owner-portfolio drain (`drain.readablebyai.com`) or a customer-owned hosted drain. Query owned `rba_crawler_hit` or minimized `rba_benchmark_crawler_hit` events. Read `bot`, `verification`, `status_class` (and `verification_method` / `collection_basis` when present). Do not call `drain_parser.py` on those rows. Do not invent UA strings so the parser will accept them.
 
-First owned result on this instrument (readablebyai.com, 2026-08-31, operator PostHog): CLEAR for retrieval. Verified 2xx from vendor ranges on googlebot, oai-searchbot, gptbot, chatgpt-user, bingbot, perplexitybot. Impostor populations stay in the dataset and do not flip CLEAR.
+First owned result on this instrument (readablebyai.com, 2026-08-31, operator PostHog): CLEAR for retrieval. Verified 2xx from vendor ranges on googlebot, oai-searchbot, gptbot, chatgpt-user, bingbot, perplexitybot. A Googlebot-shaped population hitting api routes at 100% 4xx is a scanner, not an incident — do not escalate it. Own `geo_probe` runs can land in the same dataset as impostors. Neither flips CLEAR.
 
 ### Owned-log rule
 
@@ -120,7 +120,7 @@ Advertising-class tokens (`OAI-AdsBot`) do not STOP citation work.
 
 `NO_LLMS_TXT` is a footnote. Never lead with it.
 
-Pre-PR #3 `ROBOTS_BLOCKS` must be re-probed before it can STOP `/geo`.
+Use engine SHA `de557923`+ for new `ROBOTS_BLOCKS` reads. The pre-PR #3 tie-break flipped no live STOP in the 2026-08-31 field pair.
 
 ## Step 5: Output
 
