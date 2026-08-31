@@ -1,6 +1,6 @@
 # midnight-seo-skills
 
-Claude Code skill suite for running SEO operations across a portfolio of local-service and niche sites: auditing, topical mapping, link acquisition, local pack strategy, analytics wiring, and rapid indexing.
+Claude Code skill suite for running SEO operations across a portfolio of local-service and niche sites: auditing, topical mapping, link acquisition, local pack strategy, analytics wiring, rapid indexing, and AI-search citation/answer work (GEO + AEO).
 
 Built and maintained by [Alex Bouchard](https://github.com/abouchard11) ([MidnightDev](https://midnightdev.dev)). Extracted from the skill set I run daily against my own portfolio; the working examples use Houston as the metro because that is where I operate. Swap in your own market via the configuration described below.
 
@@ -13,13 +13,15 @@ Built and maintained by [Alex Bouchard](https://github.com/abouchard11) ([Midnig
 | `indexer` | GSC rapid-indexing protocol: sitemap hygiene, URL inspection workflow, post-publish checklist |
 | `signal` | Social distribution plan for new pages: platform-specific posts, scheduling, tracking |
 | `preferred-source` | Google Preferred Sources: eligibility, JS popup embed, placement. Issues a SHIP / MAYBE / SKIP verdict so the button is not wallpapered onto tools, games, or `/blog` paths |
+| `geo` | Generative Engine Optimization: prompt-probe matrix across ChatGPT, Perplexity, Gemini, Claude, and AI Mode; citation vs mention vs absent; on-page citability on BOFU pages |
+| `aeo` | Answer Engine Optimization: extractable passages for featured snippets, People Also Ask, voice, and the short AI Overview block — still on purchase-intent pages |
 | `hunter` | Backlink gap analysis: referring-domain audit, link targets, linkable-asset specs |
 | `kilo` | Executable link acquisition: outreach sequences, broken-link targets, resource-page submissions, journalist pitches |
 | `parasite` | Parasite SEO: publish on high-authority platforms to capture SERPs a new domain cannot win head-to-head |
 | `whale` | New-domain discovery: exact-match local-service domains validated with real volume and CPC data |
 | `map-flap` | Google Map Pack strategy for local sub-markets: GBP optimization plus a geo-grid attack plan |
 | `ga4` | GA4 telemetry wiring: track money events, not vanity metrics; UTM discipline and conversion gap checks |
-| `seo-references` | Shared methodology core and MCP data-pull patterns used by all skills |
+| `seo-references` | Shared methodology core, MCP data-pull patterns, and dated Sturm-short operator notes used by all skills |
 
 ## Install
 
@@ -44,12 +46,12 @@ Designed around MCP servers for Semrush, Google Search Console, and GA4; several
 
 ## Related
 
-- [ai-citation-patterns](https://github.com/abouchard11/ai-citation-patterns) — my dated, sourced research on how AI answer engines select and cite content; the GEO companion to this suite.
+- [ai-citation-patterns](https://github.com/abouchard11/ai-citation-patterns) — my dated, sourced research on how AI answer engines select and cite content; the GEO companion to this suite. `/geo` and `/aeo` are the execution paths.
 - [claude-desktop-skills](https://github.com/abouchard11/claude-desktop-skills) — sibling skill suite for knowledge-work prompts; different layer than this SEO ops pack.
 
 ## Credits
 
-Parts of the bottom-of-funnel approach were informed by Edward Sturm's publicly taught Compact Keywords framework ([edwardsturm.com](https://edwardsturm.com)). The skill engineering, tool orchestration, and deliverable formats are original work.
+Parts of the bottom-of-funnel approach were informed by Edward Sturm's publicly taught Compact Keywords framework ([edwardsturm.com](https://edwardsturm.com)). Dated operator notes from specific Aug 2026 shorts live in `skills/seo-references/sturm-shorts.md` and are executed by `/geo`, `/aeo`, and `/preferred-source`. The skill engineering, tool orchestration, and deliverable formats are original work.
 
 ## Rights
 
