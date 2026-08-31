@@ -9,7 +9,7 @@ Core operating principles for all SEO skill output in this repo:
 - **Above-the-fold clarity.** Every page needs a clear H1 + 3-5 sentence intro + CTA button. The CTA must be visible without scrolling.
 - **Link quality over volume.** A few topical, niche-relevant backlinks beat hundreds of generic ones.
 - **Blog SEO is declining.** AI Overviews reduce informational blog CTR by 34%. Purchase-intent pages are the counter-strategy.
-- **GEO and AEO sit on those pages.** GEO (`/geo`) optimizes for a citation or brand mention inside a synthesized answer. AEO (`/aeo`) optimizes for the extracted passage (snippet, PAA, voice, short AIO block). Neither skill is permission to stand up a "what is" blog or to label a page "for LLMs, not humans."
+- **GEO and AEO sit on those pages.** GEO (`/geo`) optimizes for a citation or brand mention inside a synthesized answer. AEO (`/aeo`) optimizes for the extracted passage (snippet, PAA, voice, short AIO block). Entity corroboration (`/entity`) is the name-consistency desk behind both. None of those skills is permission to stand up a "what is" blog or to label a page "for LLMs, not humans."
 - **Input before output.** `/geo-crawl` mounts [geo-crawl-audit](https://github.com/abouchard11/geo-crawl-audit). Retrieval bots must be able to reach, fetch, and read raw HTML before `/geo` writes a prompt matrix. STOP on CSR_SHELL, retrieval/user_fetch BOT_DIFFERENTIAL, or retrieval/user_fetch ROBOTS_BLOCKS. Do not fork the probe into this repo.
 - **80/20 focus.** 80% of results come from 20% of effort. The 20% that matters most: keyword in page title, meta description, URL slug, H1, and first sentence. Get these right and most technical SEO is handled.
 - **Data-driven validation.** Back every recommendation with specific data pulled from connected tools. No vague claims. Do not scrape Google SERP URLs in bulk after the `/goto` redirect change — GSC is first-party truth.
@@ -45,6 +45,8 @@ Use this table to resolve domain input to MCP tool parameters and Graphiti group
 |--------|----------|-------------|-------------|----------------|
 | example.com | example | sc-domain:example.com | properties/{{GA4_PROPERTY_ID}} | example.com |
 | example2.com | example2 | sc-domain:example2.com | properties/{{GA4_PROPERTY_ID}} | example2.com |
+
+Suite-level methodology facts (gap memos, desk changes) use `group_id=midnight-seo-skills`. Never write those into `global`. Draft payloads: `graphiti-episodes.md`. Live `add_memory` is human/policy-closed.
 
 ### C. Domain Resolution
 
@@ -87,7 +89,7 @@ Extract key findings into a structured summary with these exact sections:
 ### Step C: Save to Graphiti
 Call `mcp__graphiti__add_memory` with:
 - `name`: deterministic format `[Skill Name] — [domain]` (e.g., "Topical Map — example.com"). For portfolio-wide skills, use `[Skill Name] — Portfolio`.
-- `group_id`: resolved from MCP Routing Map, or `global` for portfolio-wide skills
+- `group_id`: resolved from MCP Routing Map. Suite methodology uses `midnight-seo-skills`. `global` is for cross-project preferences only.
 - `source`: "text"
 - `source_description`: "SEO skill output — YYYY-MM-DD"
 - `episode_body`: the structured summary from Step B
@@ -131,6 +133,7 @@ Use CamoFox when a skill needs to see a **competitor's actual page content** tha
 | `/preferred-source` | Confirm `publisher.js` / the preferred-source div is already on the live host | After a SHIP or MAYBE verdict — skip entirely on SKIP hosts |
 | `/geo` | Confirm brand-in-first-sentence, SSR facts, no LLM-disclaimer lede, schema present | Homepage + #1 converting page. Do not bulk-harvest Google `/goto` URLs. Not a substitute for `/geo-crawl` |
 | `/aeo` | Snapshot our page passage + one human-paced SERP look at the current snippet owner | Only the target URL and one query. No `/goto` hammering |
+| `/entity` | Confirm visible brand string, schema `@id`, and live sameAs targets | Homepage + About. Skip if the property is local-only and `/map-flap` already owns NAP |
 
 **Skills that do NOT need CamoFox:** `neural-audit` (API data only), `ga4` (GA4 event audit), `indexer` (GSC data), `map-flap` (GBP/local strategy from API data), `geo-crawl` (curl probe + logs in geo-crawl-audit — a rendered browser is the wrong instrument).
 
