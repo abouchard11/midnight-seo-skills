@@ -13,9 +13,21 @@ Do not copy `geo_probe.py`, `drain_parser.py`, or `bots.json` into this repo. Do
 
 **First:** Read `~/.claude/skills/seo-references/core.md`.
 
-**Canonical skill:** if `geo-crawl-audit/skill/SKILL.md` is on disk (sibling clone or `~/.claude/skills/geo-crawl-audit`), follow that file for Mode A / Mode B. This file is only the mount point and the suite handshake.
+**Canonical skill:** if `geo-crawl-audit/skill/SKILL.md` is on disk (sibling clone or `~/.claude/skills/geo-crawl-audit`), follow that file for Mode A / Mode B. This file is only the mount point and the suite handshake. Prefer the **public** `geo-crawl-audit` skill over any private clone. Private clones can lag on honesty-clause wording.
 
 Public scan if the operator does not have the repo: https://readablebyai.com — treat it as Mode A lite. Logs still require Mode B on owned infrastructure.
+
+## Planes (do not collapse)
+
+| Plane | Repo | What this skill may do |
+|---|---|---|
+| Engine | public `geo-crawl-audit` | Run `geo_probe.py` + `drain_parser.py`. Cite flag codes from `references/interpreting.md`. |
+| Drain receiver | private `geo-bot-drain` | Point at setup + containment. Never copy the receiver, secrets, or `ALLOWED_DOMAINS` list into this public suite. |
+| Evidence store | private `readablebyai-evidence` | Pointer only. Never copy `index-1/`, outreach lists, notice archives, or raw probe JSON into this repo or into Graphiti. |
+| Operator artifacts | private `hq` (`outputs/geo-*`) | May cite that a dated portfolio run exists. Do not paste the run. |
+| Marketplace | private `alex-private-marketplace` | Not a GEO source. Do not install or duplicate desks from it. |
+
+Private evidence is never public. A visibility flip on the site repo must not be able to publish Index mappings or outreach kits — that is why the evidence store is split.
 
 ## Route, do not duplicate
 
@@ -23,10 +35,13 @@ Public scan if the operator does not have the repo: https://readablebyai.com —
 - Passages / snippets → `/aeo`
 - Preferred Sources badge → `/preferred-source`
 - GSC indexing → `/indexer`
+- Entity name / sameAs → `/entity`
 
 ## Step 1: Parse Domain
 
 Extract the domain. Strip protocol, www, trailing slash, lowercase. Resolve against the MCP Routing Map. Portfolio runs iterate the roster.
+
+If the domain is not on the routing map, Mode A may still run. Mode B may run only on logs the operator owns or is authorized to retain. Do not ingest third-party contributor drains.
 
 ## Step 2: Run the probe (Mode A)
 
@@ -47,9 +62,13 @@ If the probe cannot run:
 - Do not fake flags.
 - `/geo` may continue only if the operator explicitly accepts an unprobed run. Record that in the Graphiti summary.
 
+Dated footnote (gap memo 2026-08-31): `OAI-AdsBot` is a ChatGPT ads fetch with independent robots control. It is not a reason to mint a new desk. Training-only blocks still do not STOP `/geo`. Confirm the token against current `bots.json` before treating it as in-registry.
+
 ## Step 3: Confirm in logs when required (Mode B)
 
-Required when Mode A raises `BOT_DIFFERENTIAL`, `SLOW_TTFB`, or `TTFB_VARIANCE` on retrieval or user_fetch bots.
+Required when Mode A raises `BOT_DIFFERENTIAL`, `SLOW_TTFB`, or `TTFB_VARIANCE` on retrieval or user_fetch bots. Do not skip because a public scan looked clean.
+
+Use the **public** parser. The private `geo-crawl-audit-internal` copy of `drain_parser.py` is the same engine SHA as of 2026-08-31 — do not fork a third copy into this suite.
 
 ```bash
 python3 scripts/drain_parser.py logs/*.ndjson --out ./audit-results --verify
@@ -57,7 +76,16 @@ python3 scripts/drain_parser.py logs/*.ndjson --out ./audit-results --verify
 
 Setup: `geo-crawl-audit/references/log-pipeline.md`. Vercel runtime logs alone miss edge/static bot hits.
 
-No drain: print the finding as **UNCONFIRMED** and still STOP `/geo` citation work if the flag is CRITICAL on a retrieval bot. Do not invent log rows.
+### Owned-log rule
+
+Mode B input is owned infrastructure only:
+
+1. Operator-exported drain files (Vercel NDJSON / combined access logs) for domains on the routing map or otherwise authorized.
+2. Minimized events from the private drain receiver after they have already dropped raw IP, path, UA, and visitor id.
+3. Never raw rows from `readablebyai-evidence` (those are Index / outreach evidence, not a live drain).
+4. Never a drain configured as **Projects: All**. The receiver must exclude itself. If the receiver would log its own project, treat that as a containment fault and stop the parse.
+
+No drain: print the finding as **UNCONFIRMED** and still STOP `/geo` citation work if the flag is CRITICAL on a retrieval bot. Do not invent log rows. Do not backfill from public Index reports.
 
 ## Step 4: Suite handshake
 
@@ -77,7 +105,8 @@ Training-bot blocks (`GPTBot`, `ClaudeBot`, `Google-Extended`, …) are a rights
 
 Follow the Output Protocol from core.md:
 1. Print the scorecard worst-first, then the STOP / CONTINUE / CLEAR verdict
-2. Extract structured summary (include flag codes and whether Mode B ran)
-3. Save to Graphiti with name `GEO Crawl — [domain]`
+2. Extract structured summary (include flag codes, whether Mode B ran, and whether logs were owned vs missing)
+3. Draft Graphiti save with name `GEO Crawl — [domain]`, `group_id` from the MCP Routing Map. Suite methodology facts use `group_id=midnight-seo-skills`. Live `add_memory` is human/policy-closed.
 
 Do not paste a prompt-probe matrix here. That is `/geo` after CLEAR or CONTINUE WITH FIXES.
+Do not paste Index probe bodies, notice lists, or drain secrets into the summary.
