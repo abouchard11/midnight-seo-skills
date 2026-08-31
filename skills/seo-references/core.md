@@ -10,7 +10,7 @@ Core operating principles for all SEO skill output in this repo:
 - **Link quality over volume.** A few topical, niche-relevant backlinks beat hundreds of generic ones.
 - **Blog SEO is declining.** AI Overviews reduce informational blog CTR by 34%. Purchase-intent pages are the counter-strategy.
 - **GEO and AEO sit on those pages.** GEO (`/geo`) optimizes for a citation or brand mention inside a synthesized answer. AEO (`/aeo`) optimizes for the extracted passage (snippet, PAA, voice, short AIO block). Entity corroboration (`/entity`) is the name-consistency desk behind both. None of those skills is permission to stand up a "what is" blog or to label a page "for LLMs, not humans."
-- **Input before output.** `/geo-crawl` mounts [geo-crawl-audit](https://github.com/abouchard11/geo-crawl-audit). Retrieval bots must be able to reach, fetch, and read raw HTML before `/geo` writes a prompt matrix. STOP on CSR_SHELL, retrieval/user_fetch BOT_DIFFERENTIAL, or retrieval/user_fetch ROBOTS_BLOCKS. Do not fork the probe into this repo.
+- **Input before output.** `/geo-crawl` mounts [geo-crawl-audit](https://github.com/abouchard11/geo-crawl-audit). Retrieval bots must be able to reach, fetch, and read raw HTML before `/geo` writes a prompt matrix. STOP on CSR_SHELL, retrieval/user_fetch BOT_DIFFERENTIAL, or retrieval/user_fetch ROBOTS_BLOCKS. Do not fork the probe into this repo. Mode B (drain parser) runs on **owned logs only** when Mode A raises BOT_DIFFERENTIAL, SLOW_TTFB, or TTFB_VARIANCE. Private drain receiver and evidence store stay out of this public repo — pointer, never a copy.
 - **80/20 focus.** 80% of results come from 20% of effort. The 20% that matters most: keyword in page title, meta description, URL slug, H1, and first sentence. Get these right and most technical SEO is handled.
 - **Data-driven validation.** Back every recommendation with specific data pulled from connected tools. No vague claims. Do not scrape Google SERP URLs in bulk after the `/goto` redirect change — GSC is first-party truth.
 
@@ -23,6 +23,7 @@ Core operating principles for all SEO skill output in this repo:
 - Ledes or hidden text that admit the page exists for LLM manipulation
 - Treating `llms.txt` as a ranking or citation lever
 - Citation copy on a host whose retrieval bots cannot fetch the page
+- Copying Index probe bodies, outreach kits, or drain allowlists into this public suite
 
 Parts of the bottom-of-funnel approach here were informed by Edward Sturm's publicly taught Compact Keywords framework (edwardsturm.com). Dated notes from specific shorts live in `sturm-shorts.md`.
 
@@ -54,7 +55,7 @@ When a skill receives a domain argument:
 1. Strip protocol (https://), www., trailing slashes, and lowercase
 2. Look up in the MCP Routing Map above
 3. If found: use the row's group_id, GSC Property, GA4 Property, and Semrush Domain
-4. If NOT found: warn the user that the domain is not in the portfolio map. Ask if they want to proceed with Semrush data only (no GSC/GA4).
+4. If NOT found: warn the user that the domain is not in the portfolio map. Ask if they want to proceed with Semrush data only (no GSC/GA4). Mode B logs still require explicit authorization.
 
 ### D. Local vs. Non-Local Domains
 
@@ -96,6 +97,8 @@ Call `mcp__graphiti__add_memory` with:
 
 Before saving, search Graphiti with `mcp__graphiti__search_nodes` for the same `name` to check for prior runs. If found, note in the episode_body that this is an update to a prior analysis.
 
+Live `add_memory` is human/policy-closed when Graphiti MCP is not attached or when policy forbids model-owned remember. Draft the payload; do not invent a second store.
+
 ## 4. MCP Failure Handling
 
 **Data source priority:**
@@ -103,6 +106,7 @@ Before saving, search Graphiti with `mcp__graphiti__search_nodes` for the same `
 - **GSC** = ENRICHMENT (optional). If GSC fails, warn: `[SEO] GSC data unavailable — proceeding with Semrush data.` Exception: `/aeo` treats GSC as PRIMARY because snippet inventory is first-party query data.
 - **GA4** = ENRICHMENT (optional). If GA4 fails, warn: `[SEO] GA4 data unavailable — proceeding with Semrush data.`
 - **geo-crawl-audit probe** = PRIMARY for `/geo-crawl` and a hard preflight for `/geo`. If the probe binary is missing: `[SEO] geo-crawl-audit probe unavailable — clone https://github.com/abouchard11/geo-crawl-audit or scan https://readablebyai.com.` Do not invent flags.
+- **geo-crawl Mode B logs** = PRIMARY confirmation when Mode A raises a retrieval/user_fetch differential or TTFB flag. If owned drain files are missing: mark the flag **UNCONFIRMED**. Still STOP `/geo` on CRITICAL retrieval flags. Do not invent log rows and do not import private evidence-store JSON.
 
 **Date windows:** All data pulls use "last 28 days" unless noted. GSC has ~3-day latency, GA4 ~24-48h, Semrush ~monthly refresh.
 
