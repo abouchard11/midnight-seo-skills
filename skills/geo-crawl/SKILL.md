@@ -22,7 +22,8 @@ Public scan if the operator does not have the repo: https://readablebyai.com —
 | Plane | Repo | What this skill may do |
 |---|---|---|
 | Engine | public `geo-crawl-audit` | Run `geo_probe.py` + `drain_parser.py`. Cite flag codes from `references/interpreting.md`. |
-| Drain receiver | private `geo-bot-drain` | Point at setup + containment. Never copy the receiver, secrets, or `ALLOWED_DOMAINS` list into this public suite. |
+| Drain product | public ReadableByAI | The drainer. Customer-owned hosted drain: [readablebyai.com/logs/hosted](https://readablebyai.com/logs/hosted) → `/api/drain/<key>`. Owner-portfolio receiver hostname: `https://drain.readablebyai.com/api/drain` (GET returns `ok`). Do **not** POST to `https://readablebyai.com/api/drain` — that path is a 410 tombstone for the same-project loop. Never copy drain keys or secrets. |
+| Drain receiver source | private `geo-bot-drain` | Contained receiver project behind `drain.readablebyai.com`. Point at setup + containment. Never copy the receiver, secrets, or `ALLOWED_DOMAINS` list into this public suite. |
 | Evidence store | private `readablebyai-evidence` | Pointer only. Never copy `index-1/`, outreach lists, notice archives, or raw probe JSON into this repo or into Graphiti. |
 | Operator artifacts | private `hq` (`outputs/geo-*`) | May cite that a dated portfolio run exists. Do not paste the run. |
 | Marketplace | private `alex-private-marketplace` | Not a GEO source. Do not install or duplicate desks from it. |
@@ -78,14 +79,20 @@ Setup: `geo-crawl-audit/references/log-pipeline.md`. Vercel runtime logs alone m
 
 ### Owned-log rule
 
-Mode B input is owned infrastructure only:
+Mode B input is owned infrastructure only. The drain **product** is ReadableByAI:
 
-1. Operator-exported drain files (Vercel NDJSON / combined access logs) for domains on the routing map or otherwise authorized.
-2. Minimized events from the private drain receiver after they have already dropped raw IP, path, UA, and visitor id.
+1. Operator-exported drain files (Vercel NDJSON / combined access logs) for domains on the routing map or otherwise authorized. Preferred input for `drain_parser.py --verify` because the public parser matches raw `User-Agent`.
+2. ReadableByAI hosted drain events the operator already owns:
+   - Customer path: `rba_crawler_hit` in the operator's PostHog (domain, bot, verification, path-without-query, status).
+   - Owner-portfolio path: minimized `rba_benchmark_crawler_hit` from `drain.readablebyai.com` after the receiver dropped raw IP, exact path, UA, and visitor id.
+   - Minimized events confirm bot + `status_class` + verification. They are **not** a drop-in for `drain_parser.py --verify` (no raw UA, no IP). Do not reconstruct UA strings.
 3. Never raw rows from `readablebyai-evidence` (those are Index / outreach evidence, not a live drain).
 4. Never a drain configured as **Projects: All**. The receiver must exclude itself. If the receiver would log its own project, treat that as a containment fault and stop the parse.
+5. Never the tombstone at `readablebyai.com/api/drain` (HTTP 410). Hosted setup is `/logs/hosted`. Owner receiver is `drain.readablebyai.com`.
 
 No drain: print the finding as **UNCONFIRMED** and still STOP `/geo` citation work if the flag is CRITICAL on a retrieval bot. Do not invent log rows. Do not backfill from public Index reports.
+
+LiteSpeed / nginx hosts are not Vercel drain targets. Use combined-format access logs there, or mark Mode B UNCONFIRMED.
 
 ## Step 4: Suite handshake
 
