@@ -66,7 +66,16 @@ If the probe cannot run:
 - Do not fake flags.
 - `/geo` may continue only if the operator explicitly accepts an unprobed run. Record that in the Graphiti summary.
 
-Mode A never verifies bot identity. `geo_probe.py` spoofs UAs from the probing machine on purpose. Vendor-range checks live only in `drain_parser.py` (Mode B). "Identity UNVERIFIABLE" is therefore true of every Mode A token, including OAI-SearchBot. Do not key a handshake on `ip_ranges`.
+### Mode A identity (does not exist)
+
+Mode A never verifies that a request is a real vendor crawler. `geo_probe.py` has no IP-range code. It sends the registry UA string from the probing machine. The operator already knows that IP is not OpenAI, Amazon, or anyone else.
+
+| Mode A may claim | Mode A may not claim |
+|---|---|
+| The origin treated this UA string differently than the baseline (status, body, TTFB). | A real GPTBot / OAI-SearchBot / Amazonbot / Claude-User was blocked or allowed. |
+| A bot-sensitive layer exists. | The request came from a vendor network. |
+
+Identity verification is a Mode B property (`drain_parser.py --verify` against published ranges or pinned CIDRs) or a ReadableByAI drain property (range check in memory, then UA and IP discarded). Do not write "identity UNVERIFIABLE" on a Mode A scorecard as if it distinguished Amazonbot. It is the Mode A condition of every token.
 
 `OAI-AdsBot` (OpenAI docs, `OAI-AdsBot/1.0`) is advertising verification for pages submitted as ChatGPT ads. Class: advertising. Registry: `category: advertising`, `probe: false`. It is not retrieval and not user_fetch. Blocking it does not STOP `/geo`.
 
