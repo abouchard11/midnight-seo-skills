@@ -3,8 +3,9 @@ message: "If you use this software, please cite it as below."
 title: "midnight-seo-skills"
 abstract: >-
   A Claude Code skill suite for portfolio SEO operations: audits, topical maps, link
-  acquisition, local pack strategy, GA4 telemetry, rapid indexing, generative engine
-  optimization (GEO), and answer engine optimization (AEO).
+  acquisition, local pack strategy, GA4 telemetry, rapid indexing including IndexNow/Bing,
+  generative engine optimization (GEO), answer engine optimization (AEO), and entity
+  corroboration.
 authors:
   - family-names: "Bouchard"
     given-names: "Alex"

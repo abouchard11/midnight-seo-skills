@@ -10,19 +10,20 @@ Built and maintained by [Alex Bouchard](https://github.com/abouchard11) ([Midnig
 |---|---|
 | `neural-audit` | Portfolio-wide SEO audit: authority, traffic, keyword coverage, and deployment status per domain (Semrush + GSC + GA4) |
 | `topical-map` | Generates the 13-page architecture per domain: 1 hub, 3 sub-hubs, 9 purchase-intent pages, prioritized by volume x CPC |
-| `indexer` | GSC rapid-indexing protocol: sitemap hygiene, URL inspection workflow, post-publish checklist |
+| `indexer` | Two-index protocol: GSC URL inspection + sitemaps for Google; IndexNow + Bing Webmaster Tools for the Bing-shaped indexes ChatGPT and Copilot read |
 | `signal` | Social distribution plan for new pages: platform-specific posts, scheduling, tracking |
 | `preferred-source` | Google Preferred Sources: eligibility, JS popup embed, placement. Issues a SHIP / MAYBE / SKIP verdict so the button is not wallpapered onto tools, games, or `/blog` paths |
 | `geo-crawl` | Thin mount of [geo-crawl-audit](https://github.com/abouchard11/geo-crawl-audit): can retrieval bots reach, fetch, and read the host. Hard preflight before `/geo`. Does not fork the probe |
 | `geo` | Generative Engine Optimization: prompt-probe matrix across ChatGPT, Perplexity, Gemini, Claude, and AI Mode; citation vs mention vs absent; on-page citability on BOFU pages |
 | `aeo` | Answer Engine Optimization: extractable passages for featured snippets, People Also Ask, voice, and the short AI Overview block — still on purchase-intent pages |
+| `entity` | Entity corroboration: Organization/Person JSON-LD, sameAs consistency, Wikidata eligibility, knowledge-panel gate. Local NAP stays `/map-flap` |
 | `hunter` | Backlink gap analysis: referring-domain audit, link targets, linkable-asset specs |
 | `kilo` | Executable link acquisition: outreach sequences, broken-link targets, resource-page submissions, journalist pitches |
 | `parasite` | Parasite SEO: publish on high-authority platforms to capture SERPs a new domain cannot win head-to-head |
 | `whale` | New-domain discovery: exact-match local-service domains validated with real volume and CPC data |
 | `map-flap` | Google Map Pack strategy for local sub-markets: GBP optimization plus a geo-grid attack plan |
-| `ga4` | GA4 telemetry wiring: track money events, not vanity metrics; UTM discipline and conversion gap checks |
-| `seo-references` | Shared methodology core, MCP data-pull patterns, and dated Sturm-short operator notes used by all skills |
+| `ga4` | GA4 telemetry: money events plus the AI Assistant channel and referral regex for identifiable AI clicks |
+| `seo-references` | Shared methodology core, MCP data-pull patterns, dated Sturm-short notes, the 2026-08-31 GEO gap memo, and Graphiti episode drafts |
 
 ## Install
 
@@ -47,6 +48,8 @@ The skills read shared context from `~/.claude/skills/seo-references/core.md`:
 
 Designed around MCP servers for Semrush, Google Search Console, and GA4; several skills also use a stealth browser ([Camoufox](https://github.com/daijro/camoufox)) for SERP validation. Every skill degrades gracefully when a data source is unavailable; the failure-handling order lives in `seo-references/core.md`.
 
+Graphiti: playbooks save per the Output Protocol in `core.md`. Suite-level methodology facts use `group_id=midnight-seo-skills`. Draft payloads: `skills/seo-references/graphiti-episodes.md`. Live `add_memory` is human/policy-closed.
+
 ## Related
 
 - [geo-crawl-audit](https://github.com/abouchard11/geo-crawl-audit) — ReadableByAI probe. Input side of GEO (reach, TTFB, raw HTML, robots, logs). `/geo-crawl` is the mount; `/geo` will not write citation copy on a STOP verdict.
@@ -55,7 +58,7 @@ Designed around MCP servers for Semrush, Google Search Console, and GA4; several
 
 ## Credits
 
-Parts of the bottom-of-funnel approach were informed by Edward Sturm's publicly taught Compact Keywords framework ([edwardsturm.com](https://edwardsturm.com)). Dated operator notes from specific Aug 2026 shorts live in `skills/seo-references/sturm-shorts.md` and are executed by `/geo`, `/aeo`, and `/preferred-source`. The skill engineering, tool orchestration, and deliverable formats are original work.
+Parts of the bottom-of-funnel approach were informed by Edward Sturm's publicly taught Compact Keywords framework ([edwardsturm.com](https://edwardsturm.com)). Dated operator notes from specific Aug 2026 shorts live in `skills/seo-references/sturm-shorts.md` and are executed by `/geo`, `/aeo`, and `/preferred-source`. The 2026-08-31 gap memo records what public GEO advice was rejected. The skill engineering, tool orchestration, and deliverable formats are original work.
 
 ## Rights
 

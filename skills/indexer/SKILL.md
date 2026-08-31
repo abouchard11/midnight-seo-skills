@@ -1,7 +1,7 @@
 ---
 name: indexer
-description: Rapid indexing protocol — robots.txt, XML sitemap, Indexing API setup, and post-publish checklist grounded in GSC data
-when_to_use: Use after publishing new pages, auditing indexing status, or setting up technical SEO infrastructure. Also when the user asks about indexing, sitemaps, robots.txt, or "why isn't my page showing up".
+description: Rapid indexing protocol — robots.txt, XML sitemap, GSC URL inspection, and IndexNow/Bing submit so new BOFU pages enter both Google and the Bing-shaped indexes ChatGPT and Copilot read
+when_to_use: Use after publishing new pages, auditing indexing status, or setting up technical SEO infrastructure. Also when the user asks about indexing, sitemaps, robots.txt, IndexNow, Bing Webmaster, or why a page is missing from ChatGPT.
 argument-hint: "<domain>"
 ---
 
@@ -9,9 +9,9 @@ argument-hint: "<domain>"
 
 **First:** Read the file `~/.claude/skills/seo-references/core.md` before proceeding. Apply the methodology in that file to all output.
 
-**Also read:** `~/.claude/skills/seo-references/data-pull-patterns.md` for MCP tool parameter reference.
+**Also read:** `~/.claude/skills/seo-references/data-pull-patterns.md` for MCP tool parameter reference. Dated GEO context: `seo-references/gap-2026-08-31.md`.
 
-Core principle: connect Google Search Console, submit sitemaps, and submit URLs whenever pages are added or edited — that covers the most pressing aspects of technical SEO.
+Core principle: connect Google Search Console, submit sitemaps, and submit URLs whenever pages are added or edited — that covers Google. ChatGPT Search and Copilot do not read GSC. For those surfaces, IndexNow + Bing Webmaster Tools is the index path.
 
 ## Step 1: Parse Domain
 
@@ -38,6 +38,7 @@ Generate an optimized robots.txt. Rules:
 - Allow all important content pages
 - Block: /admin, /api, /_next/static (framework internals), /staging, duplicate content paths
 - Include Sitemap directive pointing to XML sitemap URL
+- Retrieval-bot allow/deny is owned by `/geo-crawl`. Do not invent a second crawler table here.
 - Note: Print to terminal for user to apply. This skill does not write to project files.
 
 **Section 3 — XML Sitemap Structure:**
@@ -47,22 +48,34 @@ Based on the topical map structure (13 pages per silo):
 - Purchase-intent pages: priority 0.6, changefreq monthly
 - Format: show the sitemap XML structure as advisory output
 
-**Section 4 — Rapid Indexing Protocol:**
-1. **Google Indexing API** — setup steps for the 24-hour indexing method. Note: this API is officially for JobPosting and BroadcastEvent schema types. For other content types, use the manual URL inspection approach instead.
-2. **Bing IndexNow** — instant indexing via IndexNow protocol. Simpler to implement, no restrictions on content type.
-3. **Manual URL Inspection** — submit each new URL via GSC URL Inspection tool.
-4. **Sitemap resubmission** — resubmit the sitemap in GSC after updates (the legacy Google ping endpoint was retired in 2023; do not use it).
+**Section 4 — Two-index protocol**
+
+Google and Bing are different doors.
+
+1. **Google — URL Inspection + sitemap.** The Indexing API is officially for JobPosting and BroadcastEvent. For BOFU pages, use URL Inspection. The legacy sitemap ping endpoint was retired in 2023; do not use it. Resubmit the sitemap in GSC after structural changes.
+2. **Bing — IndexNow.** Participating engines include Bing and Yandex. Google is not a participant. After every BOFU publish or material edit:
+   - Confirm an IndexNow key file is publicly reachable (`https://[host]/[key].txt`, file body = key).
+   - POST the URL list to `https://api.indexnow.org/indexnow` with `host`, `key`, `keyLocation`, `urlList`.
+   - Confirm the host in Bing Webmaster Tools. If the property has an AI Performance / Copilot citation report, screenshot the last 28 days into the playbook.
+3. **Manual URL Inspection** remains the Google fallback when the API does not apply.
+
+Do not tell the operator that IndexNow "indexes ChatGPT." It notifies Bing-shaped indexes that ChatGPT Search and Copilot have historically read. Retrieval can still miss the page.
 
 **Section 5 — Post-Publish Checklist (for every new purchase-intent page):**
 ```
 [] Submit URL in GSC via URL Inspection
-[] Ping sitemap URL
+[] POST the same URL to IndexNow (Bing path)
+[] Confirm Bing Webmaster Tools has the host verified
 [] Share on 2 social platforms (signal amplification — see /signal)
 [] If this host is a SHIP/MAYBE source, confirm the Preferred Sources popup is on the page (see /preferred-source). Skip for tools and /blog paths.
 [] Add internal link from hub page to the new page
 [] Verify rendering in Mobile-Friendly Test
-[] Check indexing status after 48 hours
+[] Check GSC indexing status after 48 hours
+[] Optional: ChatGPT Search prompt for the page's money query after Bing has had a day
 ```
+
+**Section 6 — GSC generative-AI toggle**
+Settings → Search generative AI (documented mid-2026) includes or excludes the *property* from AI Overviews, AI Mode, and generative Discover. Default is include. Record the current state. Do not flip it as an "optimization."
 
 ## Step 4: Output
 
