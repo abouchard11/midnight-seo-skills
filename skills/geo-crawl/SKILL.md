@@ -62,7 +62,7 @@ If the probe cannot run:
 - Do not fake flags.
 - `/geo` may continue only if the operator explicitly accepts an unprobed run. Record that in the Graphiti summary.
 
-Dated footnote (gap memo 2026-08-31): `OAI-AdsBot` is a ChatGPT ads fetch with independent robots control. It is not a reason to mint a new desk. Training-only blocks still do not STOP `/geo`. Confirm the token against current `bots.json` before treating it as in-registry.
+`OAI-AdsBot` (OpenAI docs, `OAI-AdsBot/1.0`) is advertising verification for pages submitted as ChatGPT ads. Class: advertising. It is not retrieval and not user_fetch. Blocking it does not STOP `/geo`. Probe it only after the engine registry lists it with `probe: false`. Registry UA refresh stays in `geo-crawl-audit` `bots.json`, not here.
 
 ## Step 3: Confirm in logs when required (Mode B)
 
@@ -74,7 +74,7 @@ Use the **public** parser. The private `geo-crawl-audit-internal` copy of `drain
 python3 scripts/drain_parser.py logs/*.ndjson --out ./audit-results --verify
 ```
 
-Setup: `geo-crawl-audit/references/log-pipeline.md`. Vercel runtime logs alone miss edge/static bot hits.
+Setup: `geo-crawl-audit/references/log-pipeline.md`. Vercel runtime logs alone miss edge/static bot hits. Do not treat `vercel___get_runtime_logs` as Mode B.
 
 ### Owned-log rule
 
@@ -98,6 +98,7 @@ Issue one verdict. Use flag codes from `geo-crawl-audit/references/interpreting.
 | **CLEAR** | Score 85–100, no CRITICAL retrieval flags | `/geo` proceeds normally. |
 
 Training-bot blocks (`GPTBot`, `ClaudeBot`, `Google-Extended`, …) are a rights choice. They do not by themselves STOP citation work. Say so.
+Advertising-class tokens (`OAI-AdsBot`) do not STOP citation work.
 
 `NO_LLMS_TXT` is a footnote. Never lead with it.
 
