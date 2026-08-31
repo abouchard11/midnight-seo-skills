@@ -12,6 +12,7 @@ argument-hint: "<domain>"
 **Also read:**
 - `~/.claude/skills/seo-references/data-pull-patterns.md`
 - `~/.claude/skills/seo-references/sturm-shorts.md`
+- `~/.claude/skills/seo-references/fan-out-diagnostic.md` — if `/geo` already ran Step 4b, reuse that table. Do not invent a second branch list.
 - Companion research: https://github.com/abouchard11/ai-citation-patterns — passage length, schema, and AIO overlap numbers. Do not dump the research file into the playbook.
 
 Unit of success: the **extracted passage**. Featured snippet, PAA answer, voice response, or the short sentence an AI Overview lifts. GEO (`/geo`) owns brand mentions and citations inside a multi-source synthesis. If the user wants both, run AEO on the page structure and GEO on the prompt matrix.
@@ -19,6 +20,7 @@ Unit of success: the **extracted passage**. Featured snippet, PAA answer, voice 
 Route, do not duplicate:
 - Preferred Sources frequency badge on AIO / AI Mode / Discover / Top Stories → `/preferred-source` (SHIP / MAYBE / SKIP first)
 - Citation share across ChatGPT / Perplexity / Claude → `/geo`
+- Fan-out heading on the same money page → `/geo` Step 4b, then the passage spec below
 - Links → `/hunter` then `/kilo`
 - Indexing → `/indexer`
 
@@ -28,6 +30,7 @@ Route, do not duplicate:
 - Do not recommend a new informational blog so schema has a home. Put one question + one 40–60 word answer on the money page that already ranks.
 - Do not treat `llms.txt` or hidden LLM-only blocks as an AEO tactic. Google has said normal SEO works; Danny Sullivan warned against chunking pages "for LLMs."
 - Do not scrape live SERP snippet HTML through Google `/goto` redirects to prove a win. Use GSC appearance data and a CamoFox snapshot of the result the operator is allowed to load like a person.
+- Do not add a page per inferred AI Mode branch. Heading-query match on the converting URL is the move. Coverage percentage is not.
 
 ## Step 1: Parse Domain
 
@@ -63,6 +66,8 @@ Prioritize:
 2. "How much" / price / timeline / city + service — these stay BOFU
 3. Drop pure "what is [generic noun]" unless that noun **is the offer**
 
+If `/geo` already produced a fan-out table this session, reuse the worst MISSING branch as one row. Do not grow the inventory to absorb every inferred subquery.
+
 ## Step 4: Generate the AEO Playbook
 
 **Section 1 — Verdict**
@@ -83,12 +88,14 @@ Stay inside core.md word caps. If the page is already at 500 words, replace a we
 - Featured snippet and PAA are passage contests. Winning them does not require more backlinks than the current owner if the passage is cleaner — but a zero-RD new domain still loses most AIO slots. Say which case this is.
 - AI Overviews now show Preferred Sources labels. That is frequency for people who opted in, not a snippet override. Point to `/preferred-source` with a fit verdict, do not paste `publisher.js` here.
 - Voice assistants read the same short answer. Write it so it can be spoken without the table.
+- Query fan-out is real. A missing branch is a heading on this page, not a new silo.
 
 **Section 4 — Anti-spam**
 Reject any draft that:
 - Announces machine-optimization in the lede
 - Lists the operator's own product as "#1" inside a fake roundup on their own domain and expects an assistant to treat it as a third-party ranking
 - Hides the answer below 800 words of preamble
+- Justifies a new informational URL as "fan-out coverage"
 
 **Section 5 — Measurement**
 Re-check in 28 days via GSC (impressions + position for the query set) and one manual SERP look. Do not treat Ahrefs/Semrush URL-path loss after Google's `/goto` change as "we lost the snippet." Confirm on the live result.
