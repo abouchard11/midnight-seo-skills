@@ -10,6 +10,7 @@ Core operating principles for all SEO skill output in this repo:
 - **Link quality over volume.** A few topical, niche-relevant backlinks beat hundreds of generic ones.
 - **Blog SEO is declining.** AI Overviews reduce informational blog CTR by 34%. Purchase-intent pages are the counter-strategy.
 - **GEO and AEO sit on those pages.** GEO (`/geo`) optimizes for a citation or brand mention inside a synthesized answer. AEO (`/aeo`) optimizes for the extracted passage (snippet, PAA, voice, short AIO block). Neither skill is permission to stand up a "what is" blog or to label a page "for LLMs, not humans."
+- **Input before output.** `/geo-crawl` mounts [geo-crawl-audit](https://github.com/abouchard11/geo-crawl-audit). Retrieval bots must be able to reach, fetch, and read raw HTML before `/geo` writes a prompt matrix. STOP on CSR_SHELL, retrieval/user_fetch BOT_DIFFERENTIAL, or retrieval/user_fetch ROBOTS_BLOCKS. Do not fork the probe into this repo.
 - **80/20 focus.** 80% of results come from 20% of effort. The 20% that matters most: keyword in page title, meta description, URL slug, H1, and first sentence. Get these right and most technical SEO is handled.
 - **Data-driven validation.** Back every recommendation with specific data pulled from connected tools. No vague claims. Do not scrape Google SERP URLs in bulk after the `/goto` redirect change — GSC is first-party truth.
 
@@ -21,6 +22,7 @@ Core operating principles for all SEO skill output in this repo:
 - Content calendars that prioritize volume over purchase intent
 - Ledes or hidden text that admit the page exists for LLM manipulation
 - Treating `llms.txt` as a ranking or citation lever
+- Citation copy on a host whose retrieval bots cannot fetch the page
 
 Parts of the bottom-of-funnel approach here were informed by Edward Sturm's publicly taught Compact Keywords framework (edwardsturm.com). Dated notes from specific shorts live in `sturm-shorts.md`.
 
@@ -98,6 +100,7 @@ Before saving, search Graphiti with `mcp__graphiti__search_nodes` for the same `
 - **Semrush** = PRIMARY (mandatory for quality). If Semrush fails, warn: `[SEO] Semrush unavailable — generating from methodology only. Results will be less specific.`
 - **GSC** = ENRICHMENT (optional). If GSC fails, warn: `[SEO] GSC data unavailable — proceeding with Semrush data.` Exception: `/aeo` treats GSC as PRIMARY because snippet inventory is first-party query data.
 - **GA4** = ENRICHMENT (optional). If GA4 fails, warn: `[SEO] GA4 data unavailable — proceeding with Semrush data.`
+- **geo-crawl-audit probe** = PRIMARY for `/geo-crawl` and a hard preflight for `/geo`. If the probe binary is missing: `[SEO] geo-crawl-audit probe unavailable — clone https://github.com/abouchard11/geo-crawl-audit or scan https://readablebyai.com.` Do not invent flags.
 
 **Date windows:** All data pulls use "last 28 days" unless noted. GSC has ~3-day latency, GA4 ~24-48h, Semrush ~monthly refresh.
 
@@ -126,10 +129,10 @@ Use CamoFox when a skill needs to see a **competitor's actual page content** tha
 | `/whale` | Check what's currently live on candidate domain names | When validating whether a domain is parked, active, or expired |
 | `/signal` | Verify social posts and profile pages are rendering correctly after posting | Optional — only if amplification verification is requested |
 | `/preferred-source` | Confirm `publisher.js` / the preferred-source div is already on the live host | After a SHIP or MAYBE verdict — skip entirely on SKIP hosts |
-| `/geo` | Confirm brand-in-first-sentence, SSR facts, no LLM-disclaimer lede, schema present | Homepage + #1 converting page. Do not bulk-harvest Google `/goto` URLs |
+| `/geo` | Confirm brand-in-first-sentence, SSR facts, no LLM-disclaimer lede, schema present | Homepage + #1 converting page. Do not bulk-harvest Google `/goto` URLs. Not a substitute for `/geo-crawl` |
 | `/aeo` | Snapshot our page passage + one human-paced SERP look at the current snippet owner | Only the target URL and one query. No `/goto` hammering |
 
-**Skills that do NOT need CamoFox:** `neural-audit` (API data only), `ga4` (GA4 event audit), `indexer` (GSC data), `map-flap` (GBP/local strategy from API data).
+**Skills that do NOT need CamoFox:** `neural-audit` (API data only), `ga4` (GA4 event audit), `indexer` (GSC data), `map-flap` (GBP/local strategy from API data), `geo-crawl` (curl probe + logs in geo-crawl-audit — a rendered browser is the wrong instrument).
 
 ### How to use CamoFox in a skill
 
