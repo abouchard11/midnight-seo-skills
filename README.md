@@ -14,7 +14,7 @@ Built and maintained by [Alex Bouchard](https://github.com/abouchard11) ([Midnig
 | `signal` | Social distribution plan for new pages: platform-specific posts, scheduling, tracking |
 | `preferred-source` | Google Preferred Sources: eligibility, JS popup embed, placement. Issues a SHIP / MAYBE / SKIP verdict so the button is not wallpapered onto tools, games, or `/blog` paths |
 | `geo-crawl` | Thin mount of [geo-crawl-audit](https://github.com/abouchard11/geo-crawl-audit): can retrieval bots reach, fetch, and read the host. Hard preflight before `/geo`. Mode B uses owned logs only. Does not fork the probe |
-| `geo` | Generative Engine Optimization: prompt-probe matrix across ChatGPT, Perplexity, Gemini, Claude, and AI Mode; citation vs mention vs absent; on-page citability on BOFU pages |
+| `geo` | Generative Engine Optimization: prompt-probe matrix across ChatGPT, Perplexity, Gemini, Claude, and AI Mode; citation vs mention vs absent; on-page citability on BOFU pages; fan-out diagnostic on one existing page |
 | `aeo` | Answer Engine Optimization: extractable passages for featured snippets, People Also Ask, voice, and the short AI Overview block — still on purchase-intent pages |
 | `entity` | Entity corroboration: Organization/Person JSON-LD, sameAs consistency, Wikidata eligibility, knowledge-panel gate. Local NAP stays `/map-flap` |
 | `hunter` | Backlink gap analysis: referring-domain audit, link targets, linkable-asset specs |
@@ -23,7 +23,7 @@ Built and maintained by [Alex Bouchard](https://github.com/abouchard11) ([Midnig
 | `whale` | New-domain discovery: exact-match local-service domains validated with real volume and CPC data |
 | `map-flap` | Google Map Pack strategy for local sub-markets: GBP optimization plus a geo-grid attack plan |
 | `ga4` | GA4 telemetry: money events plus the AI Assistant channel and referral regex for identifiable AI clicks |
-| `seo-references` | Shared methodology core, MCP data-pull patterns, dated Sturm-short notes, the 2026-08-31 GEO gap memo, and Graphiti episode drafts |
+| `seo-references` | Shared methodology core, MCP data-pull patterns, dated Sturm-short notes, the 2026-08-31 GEO gap memo, fan-out diagnostic, and Graphiti episode drafts |
 
 ## Install
 
