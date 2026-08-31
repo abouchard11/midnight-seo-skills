@@ -12,6 +12,7 @@ argument-hint: "<domain>"
 **Also read:**
 - `~/.claude/skills/seo-references/data-pull-patterns.md` for MCP tool names
 - `~/.claude/skills/seo-references/sturm-shorts.md` for the dated operator notes this skill encodes
+- `~/.claude/skills/seo-references/fan-out-diagnostic.md` for the one-page AI Mode branch check
 - Companion research: https://github.com/abouchard11/ai-citation-patterns — engine-by-engine citation behavior. Do not copy that file into the playbook. Use it as the evidence desk.
 - Input gate: `/geo-crawl` — [geo-crawl-audit](https://github.com/abouchard11/geo-crawl-audit). Do not re-audit robots.txt by hand in this skill.
 
@@ -21,6 +22,7 @@ Route, do not duplicate:
 - Reach / TTFB / raw HTML / robots / WAF → `/geo-crawl` (hard preflight)
 - Preferred Sources badge → `/preferred-source`
 - Extractable passages / snippets / PAA → `/aeo`
+- Fan-out branches on one existing BOFU page → this skill + `/aeo` (never a new desk)
 - Referring-domain work → `/hunter` then `/kilo`
 - Indexing → `/indexer`
 
@@ -31,6 +33,7 @@ Route, do not duplicate:
 - Do not scrape Google SERPs as a primary data path. The `/goto` redirect plus the retired `num=100` parameter broke that class of tracker. Use GSC, Semrush, and first-party AI-visibility tools.
 - Do not invent an eight-site directory list from memory. If the personal-site submission list from the Sturm short is needed, pull it from the video itself (see sturm-shorts.md). Then execute through `/kilo`.
 - Do not write citation copy while `/geo-crawl` is STOP. A passage the bot cannot retrieve is not GEO.
+- Do not open a new URL per inferred fan-out branch. That is the page farm the gap memo refused.
 
 ## Step 1: Parse Domain
 
@@ -49,7 +52,7 @@ Run `/geo-crawl` on this domain first, or reuse a probe from this session if it 
 | **CLEAR** | Proceed. |
 | Probe unavailable and operator did not accept an unprobed run | Same as STOP. |
 
-CSR_SHELL, retrieval/user_fetch BOT_DIFFERENTIAL, and retrieval/user_fetch ROBOTS_BLOCKS are STOP conditions. Training-bot policy is not.
+CSR_SHELL, retrieval/user_fetch BOT_DIFFERENTIAL, and retrieval/user_fetch ROBOTS_BLOCKS are STOP conditions. Training-bot policy is not. Advertising-class tokens (`OAI-AdsBot`) are not.
 
 ## Step 3: Pull Live Data
 
@@ -100,6 +103,14 @@ Score each surface per prompt:
 | **WRONG** | Hallucinated fact, dead URL, or wrong city / price |
 | **UNTESTED** | Surface not reachable this run |
 
+## Step 4b: Fan-out diagnostic (one page)
+
+Skip on STOP. Follow `fan-out-diagnostic.md`.
+
+Take one money or category-recommend prompt that already maps to the #1 converting URL. Infer at most six branches from the closed list. Map each branch onto an existing heading on that URL or onto an existing silo page. Label landings `SAME_URL` or `SILO_PAGE`. Never `NEW_URL`.
+
+If AI Mode / AI Overviews is reachable this session, load the seed prompt once and list cited domains. Otherwise mark every branch `INFERRED`. The Recommended Action is one heading + 134–167 word passage on the existing BOFU page. Do not treat branch coverage as a citation probability.
+
 ## Step 5: Generate the GEO Playbook
 
 **Section 1 — Verdict**
@@ -121,6 +132,7 @@ Skip on STOP. For the top 2–3 converting URLs, specify the smallest patch that
 - Comparison table only if the page already competes on "vs" queries
 - FAQ answers as atomic paragraphs, not a new /blog
 - Server-rendered facts — prices and specs must not live only in JS
+- Fan-out heading match for the single worst MISSING branch from Step 4b — on this URL, not a new one
 
 Keep pages at core.md length caps. GEO is extractability, not word count. If `/geo-crawl` already flagged `THIN_HTML` or `CSR_SHELL`, the fix is render-or-expand, not a new URL.
 
@@ -136,6 +148,7 @@ Skip detail on STOP. What to re-run in 28 days: `/geo-crawl` if any CONTINUE fix
 - Will not make a login-walled tool citable
 - Will not reward a page that announces it is spam for machines
 - Will not cite-optimize a host the retrieval bots cannot fetch
+- Will not farm a URL per inferred fan-out branch
 
 ## Step 6: Output
 
@@ -144,4 +157,4 @@ Follow the Output Protocol from core.md:
 2. Extract structured summary (include crawl handshake)
 3. Save to Graphiti with name `GEO — [domain]`
 
-In Recommended Actions, first item is the crawl fix on STOP or CONTINUE WITH FIXES. On CLEAR, first item is the single prompt + surface where a one-page patch would most likely flip ABSENT → CITED this month.
+In Recommended Actions, first item is the crawl fix on STOP or CONTINUE WITH FIXES. On CLEAR, first item is the single prompt + surface where a one-page patch would most likely flip ABSENT → CITED this month. If Step 4b produced a MISSING branch, that heading patch is the same item — do not list a second content workstream.
