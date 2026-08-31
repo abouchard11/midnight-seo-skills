@@ -13,6 +13,7 @@ Built and maintained by [Alex Bouchard](https://github.com/abouchard11) ([Midnig
 | `indexer` | GSC rapid-indexing protocol: sitemap hygiene, URL inspection workflow, post-publish checklist |
 | `signal` | Social distribution plan for new pages: platform-specific posts, scheduling, tracking |
 | `preferred-source` | Google Preferred Sources: eligibility, JS popup embed, placement. Issues a SHIP / MAYBE / SKIP verdict so the button is not wallpapered onto tools, games, or `/blog` paths |
+| `geo-crawl` | Thin mount of [geo-crawl-audit](https://github.com/abouchard11/geo-crawl-audit): can retrieval bots reach, fetch, and read the host. Hard preflight before `/geo`. Does not fork the probe |
 | `geo` | Generative Engine Optimization: prompt-probe matrix across ChatGPT, Perplexity, Gemini, Claude, and AI Mode; citation vs mention vs absent; on-page citability on BOFU pages |
 | `aeo` | Answer Engine Optimization: extractable passages for featured snippets, People Also Ask, voice, and the short AI Overview block — still on purchase-intent pages |
 | `hunter` | Backlink gap analysis: referring-domain audit, link targets, linkable-asset specs |
@@ -33,6 +34,8 @@ cp -R skills/* ~/.claude/skills/
 
 Then invoke any skill from Claude Code, e.g. `/neural-audit yourdomain.com`.
 
+`/geo-crawl` expects a local checkout of [geo-crawl-audit](https://github.com/abouchard11/geo-crawl-audit) so it can run `scripts/geo_probe.py`. It will not copy that engine into this repo. Public single-domain scan: [readablebyai.com](https://readablebyai.com).
+
 ## Configure
 
 The skills read shared context from `~/.claude/skills/seo-references/core.md`:
@@ -46,7 +49,8 @@ Designed around MCP servers for Semrush, Google Search Console, and GA4; several
 
 ## Related
 
-- [ai-citation-patterns](https://github.com/abouchard11/ai-citation-patterns) — my dated, sourced research on how AI answer engines select and cite content; the GEO companion to this suite. `/geo` and `/aeo` are the execution paths.
+- [geo-crawl-audit](https://github.com/abouchard11/geo-crawl-audit) — ReadableByAI probe. Input side of GEO (reach, TTFB, raw HTML, robots, logs). `/geo-crawl` is the mount; `/geo` will not write citation copy on a STOP verdict.
+- [ai-citation-patterns](https://github.com/abouchard11/ai-citation-patterns) — dated, sourced research on how AI answer engines select and cite content. `/geo` and `/aeo` are the execution paths.
 - [claude-desktop-skills](https://github.com/abouchard11/claude-desktop-skills) — sibling skill suite for knowledge-work prompts; different layer than this SEO ops pack.
 
 ## Credits
