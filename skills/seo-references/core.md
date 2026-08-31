@@ -10,7 +10,7 @@ Core operating principles for all SEO skill output in this repo:
 - **Link quality over volume.** A few topical, niche-relevant backlinks beat hundreds of generic ones.
 - **Blog SEO is declining.** AI Overviews reduce informational blog CTR by 34%. Purchase-intent pages are the counter-strategy.
 - **GEO and AEO sit on those pages.** GEO (`/geo`) optimizes for a citation or brand mention inside a synthesized answer. AEO (`/aeo`) optimizes for the extracted passage (snippet, PAA, voice, short AIO block). Entity corroboration (`/entity`) is the name-consistency desk behind both. None of those skills is permission to stand up a "what is" blog or to label a page "for LLMs, not humans."
-- **Input before output.** `/geo-crawl` mounts [geo-crawl-audit](https://github.com/abouchard11/geo-crawl-audit). Retrieval bots must be able to reach, fetch, and read raw HTML before `/geo` writes a prompt matrix. STOP on CSR_SHELL, retrieval/user_fetch BOT_DIFFERENTIAL, or retrieval/user_fetch ROBOTS_BLOCKS. Do not fork the probe into this repo. Mode B (drain parser) runs on **owned logs only** when Mode A raises BOT_DIFFERENTIAL, SLOW_TTFB, or TTFB_VARIANCE. Private drain receiver and evidence store stay out of this public repo — pointer, never a copy.
+- **Input before output.** `/geo-crawl` mounts [geo-crawl-audit](https://github.com/abouchard11/geo-crawl-audit) at PR #3 (`de557923`) or later. Retrieval bots must be able to reach, fetch, and read raw HTML before `/geo` writes a prompt matrix. STOP on CSR_SHELL, retrieval/user_fetch BOT_DIFFERENTIAL when the bot has a published range or pinned CIDR, or retrieval/user_fetch ROBOTS_BLOCKS from that engine SHA. Do not fork the probe into this repo. Mode B is `drain_parser.py` on **origin-class owned logs** (LiteSpeed/nginx/apache combined, or raw Vercel NDJSON that still has UA + IP). The ReadableByAI drain (`rba_*` events) is a different instrument — already-minimized, never a parser input. Private receiver and evidence store stay out of this public repo — pointer, never a copy.
 - **80/20 focus.** 80% of results come from 20% of effort. The 20% that matters most: keyword in page title, meta description, URL slug, H1, and first sentence. Get these right and most technical SEO is handled.
 - **Data-driven validation.** Back every recommendation with specific data pulled from connected tools. No vague claims. Do not scrape Google SERP URLs in bulk after the `/goto` redirect change — GSC is first-party truth.
 
@@ -106,7 +106,7 @@ Live `add_memory` is human/policy-closed when Graphiti MCP is not attached or wh
 - **GSC** = ENRICHMENT (optional). If GSC fails, warn: `[SEO] GSC data unavailable — proceeding with Semrush data.` Exception: `/aeo` treats GSC as PRIMARY because snippet inventory is first-party query data.
 - **GA4** = ENRICHMENT (optional). If GA4 fails, warn: `[SEO] GA4 data unavailable — proceeding with Semrush data.`
 - **geo-crawl-audit probe** = PRIMARY for `/geo-crawl` and a hard preflight for `/geo`. If the probe binary is missing: `[SEO] geo-crawl-audit probe unavailable — clone https://github.com/abouchard11/geo-crawl-audit or scan https://readablebyai.com.` Do not invent flags.
-- **geo-crawl Mode B logs** = PRIMARY confirmation when Mode A raises a retrieval/user_fetch differential or TTFB flag. If owned drain files are missing: mark the flag **UNCONFIRMED**. Still STOP `/geo` on CRITICAL retrieval flags. Do not invent log rows and do not import private evidence-store JSON.
+- **geo-crawl log confirmation** = PRIMARY when Mode A raises a retrieval/user_fetch differential or TTFB flag. Pick the instrument: `drain_parser.py` on origin-class logs, or owned ReadableByAI `rba_*` events read as bot + verification + status_class. Do not pipe minimized events into the parser. If neither exists: mark **UNCONFIRMED**. Still STOP `/geo` on CRITICAL retrieval flags whose identity is vendor-verifiable. Amazonbot and other `ip_ranges: null` tokens are UNVERIFIABLE — do not treat a Mode A differential as a clean true positive. Do not invent log rows and do not import private evidence-store JSON.
 
 **Date windows:** All data pulls use "last 28 days" unless noted. GSC has ~3-day latency, GA4 ~24-48h, Semrush ~monthly refresh.
 
@@ -127,7 +127,7 @@ CamoFox MCP is a stealth browser available as an MCP server (`camofox` in ~/.cla
 Use CamoFox when a skill needs to see a **competitor's actual page content** that Semrush/GSC data alone can't provide. Semrush gives you keywords and rankings. CamoFox gives you what's actually on the page.
 
 | Skill | CamoFox use case | When to invoke |
-|-------|-----------------|----------------|
+|-------|-----------------|---------------|
 | `/topical-map` | Verify competitor above-the-fold CTAs, H1s, page structure | When analyzing ranking gaps — navigate to top competitor pages to see their content strategy |
 | `/hunter` | Scrape competitor pages to find their link placements, outbound links, and content that earned links | When building the competitive link gap analysis |
 | `/kilo` | Validate link targets are live, find contact info, verify broken links on competitor-linking pages | When building executable link acquisition deliverables — scrape the actual pages that link to competitors to verify targets and find pitch angles |
