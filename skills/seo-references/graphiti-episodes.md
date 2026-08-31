@@ -110,3 +110,35 @@ episode_body:
 ## Recommended Actions
 1. Search nodes in group midnight-seo-skills before writing a duplicate episode with the same name.
 ```
+
+---
+
+## Episode 4 — GEO crawl planes (wiring closed)
+
+```
+name: GEO crawl planes — midnight-seo-skills
+group_id: midnight-seo-skills
+source: text
+source_description: SEO skill output — 2026-08-31
+```
+
+episode_body:
+
+```
+## Key Findings
+- /geo-crawl remains a thin mount. Engine stays in public geo-crawl-audit (geo_probe.py, drain_parser.py, bots.json). Do not fork those files into midnight-seo-skills.
+- Mode B is required when Mode A raises BOT_DIFFERENTIAL, SLOW_TTFB, or TTFB_VARIANCE on retrieval or user_fetch. Parser call is the public drain_parser.py. Internal clone scripts matched that SHA on 2026-08-31.
+- Mode B input is owned logs only. Private drain receiver geo-bot-drain has a containment rule: never Projects All; receiver excludes itself. Do not copy ALLOWED_DOMAINS into the public suite.
+- readablebyai-evidence is the never-public Index/outreach store. Do not import index-1 or outreach into this suite or into Graphiti.
+- hq outputs/geo-* are operator artifacts. Pointer only.
+- alex-private-marketplace is not a GEO desk source.
+- Live add_memory remains human/policy-closed.
+
+## Recommended Actions
+1. Persist this episode to group_id midnight-seo-skills when Graphiti MCP is attached.
+2. Do not persist raw probe JSON or drain events.
+
+## Data Sources Used
+- GitHub trees 2026-08-31: midnight-seo-skills, geo-crawl-audit, geo-crawl-audit-internal, geo-bot-drain, readablebyai-evidence, hq, alex-private-marketplace
+- Graphiti MCP: unavailable in the drafting session
+```
