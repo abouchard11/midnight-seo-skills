@@ -13,7 +13,7 @@ Built and maintained by [Alex Bouchard](https://github.com/abouchard11) ([Midnig
 | `indexer` | Two-index protocol: GSC URL inspection + sitemaps for Google; IndexNow + Bing Webmaster Tools for the Bing-shaped indexes ChatGPT and Copilot read |
 | `signal` | Social distribution plan for new pages: platform-specific posts, scheduling, tracking |
 | `preferred-source` | Google Preferred Sources: eligibility, JS popup embed, placement. Issues a SHIP / MAYBE / SKIP verdict so the button is not wallpapered onto tools, games, or `/blog` paths |
-| `geo-crawl` | Thin mount of [geo-crawl-audit](https://github.com/abouchard11/geo-crawl-audit): can retrieval bots reach, fetch, and read the host. Hard preflight before `/geo`. Mode B uses owned logs only. Does not fork the probe |
+| `geo-crawl` | Thin mount of [geo-crawl-audit](https://github.com/abouchard11/geo-crawl-audit): can retrieval bots reach, fetch, and read the host. Hard preflight before `/geo`. Mode B is origin-class logs through `drain_parser.py`. ReadableByAI drain events are a separate instrument. Does not fork the probe |
 | `geo` | Generative Engine Optimization: prompt-probe matrix across ChatGPT, Perplexity, Gemini, Claude, and AI Mode; citation vs mention vs absent; on-page citability on BOFU pages; fan-out diagnostic on one existing page |
 | `aeo` | Answer Engine Optimization: extractable passages for featured snippets, People Also Ask, voice, and the short AI Overview block — still on purchase-intent pages |
 | `entity` | Entity corroboration: Organization/Person JSON-LD, sameAs consistency, Wikidata eligibility, knowledge-panel gate. Local NAP stays `/map-flap` |
@@ -35,7 +35,7 @@ cp -R skills/* ~/.claude/skills/
 
 Then invoke any skill from Claude Code, e.g. `/neural-audit yourdomain.com`.
 
-`/geo-crawl` expects a local checkout of [geo-crawl-audit](https://github.com/abouchard11/geo-crawl-audit) so it can run `scripts/geo_probe.py` and, when Mode A raises a retrieval differential, `scripts/drain_parser.py` against **owned** drain files. It will not copy that engine into this repo. Public single-domain scan: [readablebyai.com](https://readablebyai.com).
+`/geo-crawl` expects a local checkout of [geo-crawl-audit](https://github.com/abouchard11/geo-crawl-audit) (PR #3 / `de557923` or later) so it can run `scripts/geo_probe.py` and, when Mode A raises a retrieval differential, either `scripts/drain_parser.py` against **origin-class** owned logs or a read of owned ReadableByAI `rba_*` events. Minimized drain events are not parser input. It will not copy that engine into this repo. Public single-domain scan: [readablebyai.com](https://readablebyai.com).
 
 ## Configure
 
