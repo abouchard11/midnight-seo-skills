@@ -7,23 +7,26 @@ argument-hint: "<domain>"
 
 # GEO Crawl — input gate
 
-This skill does **not** own the probe. The engine, bot registry, log parser, and flag playbook live in [geo-crawl-audit](https://github.com/abouchard11/geo-crawl-audit) (ReadableByAI, [readablebyai.com](https://readablebyai.com)).
+This skill does **not** own the probe. The engine, bot registry, log parser, and flag playbook live in [geo-crawl-audit](https://github.com/abouchard11/geo-crawl-audit) (ReadableByAI, [readablebyai.com](https://readablebyai.com)). Prefer engine SHA `de557923` or later (PR #3, 2026-08-31): RFC 9309 Allow/Disallow tie-break, failed-baseline scoring, CSR_SHELL scoped to the baseline body. `ROBOTS_BLOCKS` from before that merge is suspect.
 
 Do not copy `geo_probe.py`, `drain_parser.py`, or `bots.json` into this repo. Do not invent a second robots.txt checklist. Run that skill, then translate the flags into a STOP / CONTINUE verdict for the rest of this suite.
 
 **First:** Read `~/.claude/skills/seo-references/core.md`.
 
-**Canonical skill:** if `geo-crawl-audit/skill/SKILL.md` is on disk (sibling clone or `~/.claude/skills/geo-crawl-audit`), follow that file for Mode A / Mode B. This file is only the mount point and the suite handshake. Prefer the **public** `geo-crawl-audit` skill over any private clone. Private clones can lag on honesty-clause wording.
+**Canonical skill:** if `geo-crawl-audit/skill/SKILL.md` is on disk (sibling clone or `~/.claude/skills/geo-crawl-audit`), follow that file for Mode A and for the origin-log parser. This file is only the mount point and the suite handshake. Prefer the **public** `geo-crawl-audit` skill over any private clone. Private clones can lag on honesty-clause wording.
 
-Public scan if the operator does not have the repo: https://readablebyai.com — treat it as Mode A lite. Logs still require Mode B on owned infrastructure.
+Public scan if the operator does not have the repo: https://readablebyai.com — treat it as Mode A lite.
 
 ## Planes (do not collapse)
+
+Two log instruments. Do not feed one into the other.
 
 | Plane | Repo | What this skill may do |
 |---|---|---|
 | Engine | public `geo-crawl-audit` | Run `geo_probe.py` + `drain_parser.py`. Cite flag codes from `references/interpreting.md`. |
-| Drain product | public ReadableByAI | The drainer. Customer-owned hosted drain: [readablebyai.com/logs/hosted](https://readablebyai.com/logs/hosted) → `/api/drain/<key>`. Owner-portfolio receiver hostname: `https://drain.readablebyai.com/api/drain` (GET returns `ok`). Do **not** POST to `https://readablebyai.com/api/drain` — that path is a 410 tombstone for the same-project loop. Never copy drain keys or secrets. |
-| Drain receiver source | private `geo-bot-drain` | Contained receiver project behind `drain.readablebyai.com`. Point at setup + containment. Never copy the receiver, secrets, or `ALLOWED_DOMAINS` list into this public suite. |
+| Mode B parser | public `drain_parser.py` | Origin-class logs only: nginx/apache/LiteSpeed combined access logs, or a raw Vercel NDJSON export that still has `proxy.userAgent` and `proxy.clientIp`. |
+| Drain product | public ReadableByAI | A **different** instrument. Hosted: [readablebyai.com/logs/hosted](https://readablebyai.com/logs/hosted) → `/api/drain/<key>`. Owner receiver: `https://drain.readablebyai.com/api/drain` (GET `ok`). Events: `rba_crawler_hit` / minimized `rba_benchmark_crawler_hit`. The receiver verifies IP in memory and **discards** UA, IP, and exact path. Never pipe those events into `drain_parser.py`. Never reconstruct a UA. Do **not** POST to `https://readablebyai.com/api/drain` (410 tombstone). Never copy drain keys or secrets. |
+| Drain receiver source | private `geo-bot-drain` | Contained receiver behind `drain.readablebyai.com`. Pointer only. Never copy the receiver, secrets, or `ALLOWED_DOMAINS`. |
 | Evidence store | private `readablebyai-evidence` | Pointer only. Never copy `index-1/`, outreach lists, notice archives, or raw probe JSON into this repo or into Graphiti. |
 | Operator artifacts | private `hq` (`outputs/geo-*`) | May cite that a dated portfolio run exists. Do not paste the run. |
 | Marketplace | private `alex-private-marketplace` | Not a GEO source. Do not install or duplicate desks from it. |
@@ -42,11 +45,11 @@ Private evidence is never public. A visibility flip on the site repo must not be
 
 Extract the domain. Strip protocol, www, trailing slash, lowercase. Resolve against the MCP Routing Map. Portfolio runs iterate the roster.
 
-If the domain is not on the routing map, Mode A may still run. Mode B may run only on logs the operator owns or is authorized to retain. Do not ingest third-party contributor drains.
+If the domain is not on the routing map, Mode A may still run. Log confirmation may run only on logs the operator owns or is authorized to retain. Do not ingest third-party contributor drains.
 
 ## Step 2: Run the probe (Mode A)
 
-Locate `scripts/geo_probe.py` from a local `geo-crawl-audit` checkout. Prefer, in order:
+Locate `scripts/geo_probe.py` from a local `geo-crawl-audit` checkout at PR #3 or later. Prefer, in order:
 
 1. `../geo-crawl-audit/scripts/geo_probe.py` relative to this suite
 2. A path the operator already has on disk
@@ -63,58 +66,68 @@ If the probe cannot run:
 - Do not fake flags.
 - `/geo` may continue only if the operator explicitly accepts an unprobed run. Record that in the Graphiti summary.
 
-`OAI-AdsBot` (OpenAI docs, `OAI-AdsBot/1.0`) is advertising verification for pages submitted as ChatGPT ads. Class: advertising. It is not retrieval and not user_fetch. Blocking it does not STOP `/geo`. Probe it only after the engine registry lists it with `probe: false`. Registry UA refresh stays in `geo-crawl-audit` `bots.json`, not here.
+`OAI-AdsBot` (OpenAI docs, `OAI-AdsBot/1.0`) is advertising verification for pages submitted as ChatGPT ads. Class: advertising. Registry: `category: advertising`, `probe: false`. It is not retrieval and not user_fetch. Blocking it does not STOP `/geo`.
 
-## Step 3: Confirm in logs when required (Mode B)
+Amazonbot is retrieval in the registry and publishes **no** IP range (`ip_ranges: null`). A Mode A Amazonbot differential cannot be vendor-range verified in either direction. Label identity **UNVERIFIABLE**. It is not a clean true positive.
 
-Required when Mode A raises `BOT_DIFFERENTIAL`, `SLOW_TTFB`, or `TTFB_VARIANCE` on retrieval or user_fetch bots. Do not skip because a public scan looked clean.
+## Step 3: Confirm when required — pick the instrument
 
-Use the **public** parser. The private `geo-crawl-audit-internal` copy of `drain_parser.py` is the same engine SHA as of 2026-08-31 — do not fork a third copy into this suite.
+Required when Mode A raises `BOT_DIFFERENTIAL`, `SLOW_TTFB`, or `TTFB_VARIANCE` on retrieval or user_fetch bots. Do not skip because a public scan looked clean. Name which instrument ran.
+
+### Instrument 1 — Mode B (`drain_parser.py`)
+
+Needs an **origin-logging** host. Combined access logs (LiteSpeed / nginx / apache) are the default class. A raw Vercel NDJSON export is origin-class only if UA and client IP are still on the row.
 
 ```bash
+python3 scripts/drain_parser.py access.log --format combined --verify --out ./audit-results
 python3 scripts/drain_parser.py logs/*.ndjson --out ./audit-results --verify
 ```
 
-Setup: `geo-crawl-audit/references/log-pipeline.md`. Vercel runtime logs alone miss edge/static bot hits. Do not treat `vercel___get_runtime_logs` as Mode B.
+`--verify` is a no-op for bots with no published range (Amazonbot, several Anthropic tokens except the pinned ClaudeBot CIDR). Do not treat `verification=unknown` as confirmed identity.
+
+Vercel runtime logs are not Mode B. Do not treat `vercel___get_runtime_logs` as origin logs.
+
+LiteSpeed hosts (example: `htxpermitfix.com`) **are** the right class for this instrument. Minimized ReadableByAI drain events are the wrong class.
+
+### Instrument 2 — ReadableByAI drain (not the parser)
+
+Use when the host is already on the owner-portfolio drain (`drain.readablebyai.com`) or a customer-owned hosted drain. Query owned `rba_crawler_hit` or minimized `rba_benchmark_crawler_hit` events. Read `bot`, `verification`, `status_class` (and `verification_method` / `collection_basis` when present). Do not call `drain_parser.py` on those rows. Do not invent UA strings so the parser will accept them.
+
+First owned result on this instrument (readablebyai.com, 2026-08-31, operator PostHog): CLEAR for retrieval. Verified 2xx from vendor ranges on googlebot, oai-searchbot, gptbot, chatgpt-user, bingbot, perplexitybot. Impostor populations stay in the dataset and do not flip CLEAR.
 
 ### Owned-log rule
 
-Mode B input is owned infrastructure only. The drain **product** is ReadableByAI:
+1. Origin combined / raw NDJSON the operator exported — Instrument 1.
+2. ReadableByAI drain events the operator already owns — Instrument 2.
+3. Never raw rows from `readablebyai-evidence`.
+4. Never a drain configured as **Projects: All**. Receiver excludes itself.
+5. Never the tombstone at `readablebyai.com/api/drain` (HTTP 410).
 
-1. Operator-exported drain files (Vercel NDJSON / combined access logs) for domains on the routing map or otherwise authorized. Preferred input for `drain_parser.py --verify` because the public parser matches raw `User-Agent`.
-2. ReadableByAI hosted drain events the operator already owns:
-   - Customer path: `rba_crawler_hit` in the operator's PostHog (domain, bot, verification, path-without-query, status).
-   - Owner-portfolio path: minimized `rba_benchmark_crawler_hit` from `drain.readablebyai.com` after the receiver dropped raw IP, exact path, UA, and visitor id.
-   - Minimized events confirm bot + `status_class` + verification. They are **not** a drop-in for `drain_parser.py --verify` (no raw UA, no IP). Do not reconstruct UA strings.
-3. Never raw rows from `readablebyai-evidence` (those are Index / outreach evidence, not a live drain).
-4. Never a drain configured as **Projects: All**. The receiver must exclude itself. If the receiver would log its own project, treat that as a containment fault and stop the parse.
-5. Never the tombstone at `readablebyai.com/api/drain` (HTTP 410). Hosted setup is `/logs/hosted`. Owner receiver is `drain.readablebyai.com`.
-
-No drain: print the finding as **UNCONFIRMED** and still STOP `/geo` citation work if the flag is CRITICAL on a retrieval bot. Do not invent log rows. Do not backfill from public Index reports.
-
-LiteSpeed / nginx hosts are not Vercel drain targets. Use combined-format access logs there, or mark Mode B UNCONFIRMED.
+No origin log and no owned RBA events: print **UNCONFIRMED** and still STOP `/geo` citation work if the flag is CRITICAL on a retrieval bot whose identity is vendor-verifiable. For Amazonbot / other `ip_ranges: null` tokens, keep the Mode A lead but do not sell it as a confirmed block.
 
 ## Step 4: Suite handshake
 
-Issue one verdict. Use flag codes from `geo-crawl-audit/references/interpreting.md` — do not redefine them.
+Issue one verdict. Use flag codes from `geo-crawl-audit/references/interpreting.md` — do not redefine them. Say which log instrument ran, or that neither did.
 
 | Verdict | When | What the rest of the suite may do |
 |---|---|---|
-| **STOP** | `CSR_SHELL`; `BOT_DIFFERENTIAL` on retrieval or user_fetch (even UNCONFIRMED); `ROBOTS_BLOCKS` on retrieval or user_fetch; baseline not a normal 200 (inconclusive) | No prompt matrix. No passage rewrite sold as GEO. Fix the gate. Re-probe. |
-| **CONTINUE WITH FIXES** | `SLOW_TTFB` / `TTFB_VARIANCE`; `THIN_HTML`; `NO_SITEMAP` / `NO_ROBOTS`; training-only `ROBOTS_BLOCKS` | `/geo` and `/aeo` may run. First Recommended Action is the probe fix, not a new blog. |
-| **CLEAR** | Score 85–100, no CRITICAL retrieval flags | `/geo` proceeds normally. |
+| **STOP** | `CSR_SHELL`; `BOT_DIFFERENTIAL` on retrieval or user_fetch when the bot has a published range or pinned CIDR (even UNCONFIRMED); `ROBOTS_BLOCKS` on retrieval or user_fetch from engine SHA `de557923`+; baseline not a normal 200 (inconclusive) | No prompt matrix. No passage rewrite sold as GEO. Fix the gate. Re-probe. |
+| **CONTINUE WITH FIXES** | `SLOW_TTFB` / `TTFB_VARIANCE`; `THIN_HTML`; `NO_SITEMAP` / `NO_ROBOTS`; training-only `ROBOTS_BLOCKS`; Amazonbot-only differential with identity UNVERIFIABLE | `/geo` and `/aeo` may run. First Recommended Action is the probe fix or a Mode B origin-log pull, not a new blog. |
+| **CLEAR** | Score 85–100, no CRITICAL retrieval flags — or Instrument 2 shows verified 2xx on retrieval tokens | `/geo` proceeds normally. |
 
 Training-bot blocks (`GPTBot`, `ClaudeBot`, `Google-Extended`, …) are a rights choice. They do not by themselves STOP citation work. Say so.
 Advertising-class tokens (`OAI-AdsBot`) do not STOP citation work.
 
 `NO_LLMS_TXT` is a footnote. Never lead with it.
 
+Pre-PR #3 `ROBOTS_BLOCKS` must be re-probed before it can STOP `/geo`.
+
 ## Step 5: Output
 
 Follow the Output Protocol from core.md:
 1. Print the scorecard worst-first, then the STOP / CONTINUE / CLEAR verdict
-2. Extract structured summary (include flag codes, whether Mode B ran, and whether logs were owned vs missing)
-3. Draft Graphiti save with name `GEO Crawl — [domain]`, `group_id` from the MCP Routing Map. Suite methodology facts use `group_id=midnight-seo-skills`. Live `add_memory` is human/policy-closed.
+2. Extract structured summary (include flag codes, which log instrument ran, owned vs missing)
+3. Draft Graphiti save with name `GEO Crawl — [domain]`, `group_id` from the MCP Routing Map. Suite methodology facts use `group_id=midnight-seo-skills`. Live `add_memory` is human/policy-closed. Episodes already in the write-ahead spool must not be re-drafted.
 
 Do not paste a prompt-probe matrix here. That is `/geo` after CLEAR or CONTINUE WITH FIXES.
 Do not paste Index probe bodies, notice lists, or drain secrets into the summary.
