@@ -30,7 +30,16 @@ Do not proceed with a proof-heavy promotional video when the underlying page has
 
 **Semrush (ENRICHMENT):**
 4. Confirm volume, CPC, and current SERP composition for the top candidates.
-5. Note whether a video block, YouTube result, or other video feature is actually present. If no video surface appears and the query is not naturally demonstrable, choose a better query.
+5. Note whether a video block, Short videos carousel, YouTube result, or other video feature is actually present. If no video surface appears and the query is not naturally demonstrable, choose a better query.
+
+For B2B software, test these buyer-query families before inventing a topic:
+
+- best [category] software
+- [product] vs [competitor]
+- how to [job the buyer hires the tool to do]
+- is [product] worth it
+
+A current short-video SERP feature is evidence for a Short-first experiment on that query. A third-party aggregate chart is not.
 
 **GA4 (ENRICHMENT):**
 6. Pull sessions and money events for the candidate landing pages. The video should amplify a page that matters commercially, not manufacture a new explainer silo.
@@ -49,7 +58,7 @@ If sources fail, print the applicable `[SEO]` warning from core.md and continue 
 
 ## Step 3: Build the video asset
 
-Default to a useful 2–6 minute search-intent video. Create a 20–45 second Short/Reel derivative only when the idea survives compression.
+Default to a useful 2–6 minute search-intent video. If the current query visibly contains a short-video feature, a 20–45 second YouTube Short may be the primary test; otherwise use the Short/Reel as a derivative. Create long-form depth when the viewer's job cannot be answered honestly in one clip.
 
 **Required production brief:**
 
@@ -88,7 +97,7 @@ Do not put video schema on a page where the video is hidden, incidental, or abse
 
 Create from the same verified source asset; do not copy-paste one caption everywhere.
 
-- **YouTube Short:** one answer or proof moment; link the related long-form video when available.
+- **YouTube Short:** one answer or proof moment; link the related long-form video when available. For a B2B software pilot, publish here first when the verified SERP evidence favors Shorts, then syndicate selectively.
 - **Instagram Reel:** visual hook and native caption; repeat the same entity/query language naturally. Cross-posting is distribution, not proof of a ranking signal.
 - **LinkedIn:** first-party lesson or evidence for professional/B2B topics.
 - **X:** one sharp claim plus the owned evidence URL.
