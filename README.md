@@ -11,7 +11,7 @@ Built and maintained by [Alex Bouchard](https://github.com/abouchard11) ([Midnig
 | `neural-audit` | Portfolio-wide SEO audit: authority, traffic, keyword coverage, and deployment status per domain (Semrush + GSC + GA4) |
 | `topical-map` | Generates the 13-page architecture per domain: 1 hub, 3 sub-hubs, 9 purchase-intent pages, prioritized by volume x CPC |
 | `indexer` | Two-index protocol: GSC URL inspection + sitemaps for Google; IndexNow + Bing Webmaster Tools for the Bing-shaped indexes ChatGPT and Copilot read |
-| `signal` | Social distribution plan for new pages: platform-specific posts, scheduling, tracking |
+| `signal` | Query-led YouTube/video and social distribution tied to existing purchase-intent pages, with transcript, schema, and measured validation |
 | `preferred-source` | Google Preferred Sources: eligibility, JS popup embed, placement. Issues a SHIP / MAYBE / SKIP verdict so the button is not wallpapered onto tools, games, or `/blog` paths |
 | `geo-crawl` | Thin mount of [geo-crawl-audit](https://github.com/abouchard11/geo-crawl-audit): can retrieval bots reach, fetch, and read the host. Hard preflight before `/geo`. Mode B is origin-class logs through `drain_parser.py`. ReadableByAI drain events are a separate instrument. Does not fork the probe |
 | `geo` | Generative Engine Optimization: prompt-probe matrix across ChatGPT, Perplexity, Gemini, Claude, and AI Mode; citation vs mention vs absent; on-page citability on BOFU pages; fan-out diagnostic on one existing page |

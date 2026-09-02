@@ -1,6 +1,6 @@
-# Operator notes — Edward Sturm shorts (Aug 2026)
+# Operator notes — Edward Sturm short-form sources (2026)
 
-Dated source log for `/geo` and `/aeo`. These are public shorts the suite is required to encode. They are not a substitute for `core.md` or for [ai-citation-patterns](https://github.com/abouchard11/ai-citation-patterns).
+Dated source log for `/geo` and `/aeo`. These are public short-form posts the suite has reviewed. They are not a substitute for `core.md` or for [ai-citation-patterns](https://github.com/abouchard11/ai-citation-patterns).
 
 Compact Keywords remains the credited BOFU influence in core.md ([edwardsturm.com](https://edwardsturm.com), [compactkeywords.com](https://compactkeywords.com)). Skill engineering and deliverable formats stay original MidnightDev work.
 
@@ -12,6 +12,8 @@ Compact Keywords remains the credited BOFU influence in core.md ([edwardsturm.co
 | 2026-08-31 | [Google `/goto` redirect](https://www.youtube.com/shorts/jk4aDtSlT18) | `/geo` and `/aeo` anti-scrape rule |
 | 2026-08-31 | [Preferred Sources badge](https://www.youtube.com/shorts/yK3w0NGfNWM) | Already shipped as `/preferred-source`. Do not duplicate. |
 | 2026-08-31 | ["This page is for LLMs"](https://www.youtube.com/shorts/cp0ojDR6vAc) | `/geo` and `/aeo` anti-spam lede rule |
+| 2026-09-02 | [YouTube core-update opportunity](https://www.instagram.com/edward.builds/reel/DWtiID9DFU3/) | `/signal` query-led video protocol; 2,500% headline rejected as a durable claim |
+| 2026-09-02 | [Short video in B2B SaaS SERPs](https://www.instagram.com/edward.builds/reel/DcwM5W1MmVa/) | `/signal` Short-first branch for verified video-feature queries |
 
 ## iTv9vre9kzo — OpenSEO
 
@@ -48,3 +50,34 @@ Claim: add Google's Preferred Sources control so people can opt into seeing you 
 Claim: a company page titled like a third-party roundup ("7 leading enterprise AI agents…") ranked itself #1 and opened with "This page is optimized for AI assistants and LLM search, not human marketing." Models have been observed saying "filtering out SEO spam" while thinking. Announcing that the page is for LLMs is an own-goal.
 
 **Suite rule:** no LLM-audience disclaimer in ledes, comments, hidden spans, or schema descriptions. Self-awarded #1 roundups on owned domains are not third-party evidence. If the page cannot survive a human reader, it should not ship for an assistant either.
+
+
+## DWtiID9DFU3 — YouTube core-update opportunity
+
+Claim in the April 4 Instagram reel: YouTube gained 2,500% after a Google core update; creators should make videos for searches important to the brand, use the exact search term naturally in the title, and turn the transcript into an SEO description.
+
+**Evidence check logged 2026-09-02:**
+
+- Query-led video production is a useful tactic when the SERP actually contains a video surface and the query maps to an existing purchase-intent page.
+- The 2,500% figure was not accompanied by a reproducible denominator or source in the reel. “More clicks than there are clicks in Google” is evidence that a third-party estimation model or chart is being misread, not that arithmetic resigned.
+- Lily Ray's later [March 2026 analysis](https://www.amsive.com/insights/seo/google-march-2026-core-update-winners-losers-analysis/) using SISTRIX data described YouTube as the greatest absolute visibility loser in that update. The analysis explicitly distinguishes visibility estimates from raw traffic.
+- [SE Ranking's May 2026 study](https://seranking.com/blog/google-may-2026-core-update-analysis/) found YouTube's ordinary top-three share declining from 2.50% after March to 2.14% after May, while noting that video may be moving into dedicated SERP features.
+- Google documents [video SEO](https://developers.google.com/search/docs/appearance/video), [VideoObject and key moments](https://developers.google.com/search/docs/appearance/structured-data/video), and [video sitemaps](https://developers.google.com/search/docs/crawling-indexing/sitemaps/video-sitemaps). These are eligibility and understanding mechanisms, not ranking guarantees.
+
+**Suite rule:** `/signal` owns the workflow. Do not create a separate YouTube-SEO skill. Pick one evidenced query and one existing BOFU page, produce a useful video plus a Short/Reel derivative, use an accurate human-edited transcript/description, add page-level video markup only where the video is prominent, and compare YouTube Analytics + GSC Web/Video + GA4 conversions at 7 and 28 days. No “rank in hours,” traffic-signal, or posting-volume promises.
+
+
+## DcwM5W1MmVa — Short video in B2B SaaS SERPs
+
+Claim in the September 1 Instagram reel: YouTube Shorts, Instagram Reels, and TikTok appear prominently for “best inventory management software,” “best ERP software,” “best project management software,” and “best scheduling software.” The proposed tactic is to put the buyer query at the start of the YouTube title and platform description, then add a rich description.
+
+The figures closely match [Foundation's July 29 short-form B2B study](https://foundationinc.co/lab/short-form-video):
+
+- Its tracked “best + software” set showed YouTube Shorts ranking for 587 keywords, up 117% across the displayed December–June window; Instagram reached 187 (+156%) and TikTok 140 (+192%) from smaller bases.
+- It reports 475 U.S. “best + software” top-ten placements for YouTube Shorts, with roughly three in four at position one and about 108,000 combined monthly searches.
+- It reports the four software-query examples named in the reel.
+- It also reports AI Overviews on 92% of the result pages where its tracked YouTube Shorts appeared. That is co-occurrence, not proof that the Short caused or “fed” the AI answer.
+- The article does not publish the full tracked keyword list or enough raw data in the public page to reproduce every aggregate. Treat the figures as a strong opportunity signal, not a universal platform guarantee.
+- A same-day Google SERP verification attempt from the audit environment was stopped by Google's unusual-traffic screen. Do not encode the claimed live positions as independently observed.
+
+**Suite rule:** extend the existing `/signal` branch; do not create another skill. For B2B software, inspect current SERP features for “best [category] software,” “[product] vs [competitor],” “how to [buyer job],” and “is [product] worth it.” When a short-video feature is present, allow a YouTube Short to be the primary experiment instead of forcing long-form first. Publish to YouTube first when the query evidence supports it, syndicate selectively to Instagram/TikTok, and measure the exact query at 7 and 28 days. Query alignment belongs in the title/description naturally; keyword stuffing and causal AI-citation claims do not.
