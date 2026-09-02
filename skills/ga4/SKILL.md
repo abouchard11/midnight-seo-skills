@@ -9,7 +9,7 @@ argument-hint: "<domain>"
 
 **First:** Read the file `~/.claude/skills/seo-references/core.md` before proceeding. Apply the methodology and voice defined there to all output.
 
-**Also read:** `~/.claude/skills/seo-references/data-pull-patterns.md` for MCP tool parameter reference. Dated GEO measurement note: `seo-references/gap-2026-08-31.md`.
+**Also read:** `~/.claude/skills/seo-references/data-pull-patterns.md` for MCP tool parameter reference. Dated GEO notes: `seo-references/gap-2026-08-31.md` and `seo-references/measurement-2026-09-02.md`.
 
 ## Step 1: Parse Domain
 
@@ -112,12 +112,30 @@ Add a complementary source/medium regex view so Perplexity and odd hosts are not
 - grok.com, x.ai
 - deepseek.com
 
-Report three numbers, last 28 days, side by side:
+### Measurement boundary
+
+GA4 is the human click-through plane, not the crawler plane. Google Analytics automatically excludes known bots and spiders; that exclusion cannot be disabled, and the excluded volume is not exposed for inspection.
+
+| Observation | Evidence plane |
+|---|---|
+| A human clicks an AI answer and the page tag loads | GA4 AI Assistant, Referral, or Organic Search |
+| A traditional search crawler fetches the site | Origin logs or `/geo-crawl` Mode B |
+| An AI retrieval or training agent fetches the site | Verified origin logs or ReadableByAI `rba_*` events |
+| A user-triggered AI fetch or agent visits | Origin logs / ReadableByAI; GA4 only if a later real browser session loads the tag |
+
+Do not relabel Direct traffic as "dark AI." Do not put crawler user agents into the referral regex. Do not infer crawler demand from silence in GA4.
+
+Report five numbers for the last 28 days, side by side:
+
 1. AI Assistant channel sessions
 2. Regex referral sessions not in that channel
-3. Money events on those landing pages
+3. Organic Search sessions landing on the same URLs
+4. Money events on those landing pages
+5. Verified retrieval / user-fetch hits from the separate log or ReadableByAI plane
 
-A session is not a citation. `/geo` still owns the prompt matrix. This section only answers "did anyone click through."
+If modeled data changes the reading, record whether the report uses **Blended** or **Observed** identity. Do not change the property setting without operator approval.
+
+Explore, User Explorer, and anomaly insights are human-session diagnostics. They do not prove a citation or a crawler fetch. A session is not a citation: `/geo` owns the repeated prompt matrix, `/geo-crawl` owns reachability, and Mode B / ReadableByAI own verified crawler evidence.
 
 ## Step 4: Output
 
