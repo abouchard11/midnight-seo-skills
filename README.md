@@ -22,8 +22,8 @@ Built and maintained by [Alex Bouchard](https://github.com/abouchard11) ([Midnig
 | `parasite` | Parasite SEO: publish on high-authority platforms to capture SERPs a new domain cannot win head-to-head |
 | `whale` | New-domain discovery: exact-match local-service domains validated with real volume and CPC data |
 | `map-flap` | Google Map Pack strategy for local sub-markets: GBP optimization plus a geo-grid attack plan |
-| `ga4` | GA4 telemetry: money events plus the AI Assistant channel and referral regex for identifiable AI clicks |
-| `seo-references` | Shared methodology core, MCP data-pull patterns, dated Sturm-short notes, the 2026-08-31 GEO gap memo, fan-out diagnostic, and Graphiti episode drafts |
+| `ga4` | GA4 telemetry: money events plus identifiable AI-referral clicks; keeps human-session analytics separate from crawler/log evidence |
+| `seo-references` | Shared methodology core, MCP data-pull patterns, dated source notes, GEO gap memos, fan-out diagnostic, and Graphiti episode drafts |
 
 ## Install
 

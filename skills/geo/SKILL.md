@@ -13,6 +13,7 @@ argument-hint: "<domain>"
 - `~/.claude/skills/seo-references/data-pull-patterns.md` for MCP tool names
 - `~/.claude/skills/seo-references/sturm-shorts.md` for the dated operator notes this skill encodes
 - `~/.claude/skills/seo-references/fan-out-diagnostic.md` for the one-page AI Mode branch check
+- `~/.claude/skills/seo-references/measurement-2026-09-02.md` for the GA4/log boundary and current OpenSEO capability check
 - Companion research: https://github.com/abouchard11/ai-citation-patterns — engine-by-engine citation behavior. Do not copy that file into the playbook. Use it as the evidence desk.
 - Input gate: `/geo-crawl` — [geo-crawl-audit](https://github.com/abouchard11/geo-crawl-audit). Do not re-audit robots.txt by hand in this skill.
 
@@ -72,8 +73,17 @@ Skip this step on STOP.
 **CamoFox (ENRICHMENT):**
 6. Snapshot the homepage + the #1 converting page. Check: brand name in H1 / first sentence, server-rendered facts (price, specs, city, phone), author byline, outbound citations, FAQ block, schema present, no "for LLMs" disclosure. If CamoFox is down: `[SEO] CamoFox unavailable — on-page extractability check skipped.` Do not use CamoFox as a substitute for `/geo-crawl`. CamoFox is a rendered browser; the probe is a non-rendering fetch.
 
-**Optional AI-visibility tool (ENRICHMENT, never PRIMARY):**
-OpenSEO ([every-app/open-seo](https://github.com/every-app/open-seo), hosted [openseo.so](https://openseo.so)) tracks whether ChatGPT or Google AI Overviews mention the brand and exposes MCP/skills for agents. Use it if connected. Do not replace Semrush or GSC with it. Self-host or $10/mo hosted is an operator choice, not a recommendation to cancel the primary stack.
+**Optional OpenSEO enrichment (never PRIMARY):**
+OpenSEO ([every-app/open-seo](https://github.com/every-app/open-seo), hosted [openseo.so](https://openseo.so)) combines standard DataForSEO-backed SEO workflows with UI-based AI-visibility features.
+
+Capability boundary checked 2026-09-02:
+
+- The product UI includes Brand Lookup, Prompt Explorer, cited-page / cited-source tables, and Share of Voice.
+- The repository's MCP server does **not** register those AI-visibility functions. Do not instruct an agent to call nonexistent OpenSEO MCP tools for brand lookup or prompt exploration.
+- Hosted AI visibility is plan-gated. Self-hosting removes the app subscription gate, but it does not remove DataForSEO usage costs.
+- Vendor estimates are enrichment. They do not replace the repeated `/geo` prompt matrix or verified crawler evidence.
+
+Use OpenSEO only as a compact cross-site enrichment layer if connected. Keep Semrush + GSC as the standard SEO truth, `/geo-crawl` as reachability, the owned drain as verified crawler evidence, and the repeated prompt matrix as citation truth.
 
 If a source fails, print the `[SEO]` warning from core.md and continue.
 
@@ -140,7 +150,7 @@ Keep pages at core.md length caps. GEO is extractability, not word count. If `/g
 Do not re-parse robots.txt here. One paragraph: handshake verdict, flag codes, link to the probe report. Retrieval vs training is decided in `/geo-crawl`.
 
 **Section 6 — Measurement**
-Skip detail on STOP. What to re-run in 28 days: `/geo-crawl` if any CONTINUE fix shipped, then the same prompt matrix, RD count, branded GSC queries, OpenSEO AI-visibility if connected. Do not use scraped Google rank-tracker URL paths as proof — `/goto` ate those.
+Skip detail on STOP. What to re-run in 28 days: `/geo-crawl` if any CONTINUE fix shipped, then the same prompt matrix, RD count, branded GSC queries, and OpenSEO AI-visibility UI/export if the operator has access. Do not use scraped Google rank-tracker URL paths as proof — `/goto` ate those.
 
 **Section 7 — What this will not do**
 - Will not replace Map Pack for local
