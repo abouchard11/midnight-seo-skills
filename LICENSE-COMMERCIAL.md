@@ -24,6 +24,9 @@ work. An agency may buy one license per practitioner.
    `topical-map`, `whale`).
 2. The bundled copy of the `ai-citation-patterns` research included in the pack.
 3. Accompanying install notes in `commercial/`.
+4. The `operator-evidence/` worked-portfolio chapter as shipped in the pack.
+5. The `chatgpt-probe-harness/` extractor, fixtures, and protocol as shipped.
+6. `SUPPORT.md` (support terms only — not a service contract).
 
 ## Proof of license
 
@@ -40,7 +43,7 @@ Keep it. License id = Stripe payment / checkout session id on that receipt.
   factual attribution.
 - No warranty that any search engine, LLM, or MCP will rank, cite, or return a
   given result. These are operator playbooks, not ranking guarantees.
-- Viewing or cloning the public GitHub repository does **not** grant this license.
+- Viewing or cloning the GitHub repository does **not** grant this license.
 
 ## Term
 

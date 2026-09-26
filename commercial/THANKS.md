@@ -5,9 +5,8 @@ your Stripe receipt is the license record. Keep the email.
 
 ## Download
 
-Latest pack: https://github.com/abouchard11/midnight-seo-skills/releases/latest
-
-Unzip and follow [INSTALL.md](INSTALL.md).
+The zip is emailed after payment (`midnight-geo-pro-v1.1.0.zip`). Unzip and
+follow [INSTALL.md](INSTALL.md). Support terms: [SUPPORT.md](../SUPPORT.md).
 
 License terms: [LICENSE-COMMERCIAL.md](../LICENSE-COMMERCIAL.md).
 

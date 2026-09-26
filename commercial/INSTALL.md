@@ -6,13 +6,17 @@ access is not a license. Terms: [LICENSE-COMMERCIAL.md](../LICENSE-COMMERCIAL.md
 The zip layout:
 
 ```
-midnight-geo-pro-v1.0.0/
+midnight-geo-pro-v1.1.0/
   LICENSE
   LICENSE-COMMERCIAL.md
   README.md
+  SUPPORT.md
+  MANIFEST.md
   commercial/
   skills/
   research/ai-citation-patterns/
+  operator-evidence/
+  chatgpt-probe-harness/
 ```
 
 ## Claude Code
@@ -42,6 +46,22 @@ are enabled.
 
 Read `research/ai-citation-patterns/README.md`. `/geo` and `/aeo` are the
 execution paths; the research file is the dated source, not a skill.
+
+## Operator evidence (v1.1)
+
+Worked 18-domain crawl + GSC export: `operator-evidence/README.md`.
+
+## ChatGPT probe harness (v1.1)
+
+One-page protocol: `chatgpt-probe-harness/PROTOCOL.md`. Then:
+
+```bash
+python3 chatgpt-probe-harness/test_extract.py
+```
+
+## Support
+
+What email support covers (and does not): [SUPPORT.md](../SUPPORT.md).
 
 ## geo-crawl probe
 

@@ -1,0 +1,130 @@
+{
+  "title": "Quick lookup: Yapword launch signals",
+  "create_time": 1743800000.0,
+  "update_time": 1743800100.0,
+  "conversation_id": "f2222222-bbbb-4ccc-8ddd-222233334444",
+  "id": "f2222222-bbbb-4ccc-8ddd-222233334444",
+  "current_node": "node-4",
+  "mapping": {
+    "node-0": {
+      "id": "node-0",
+      "message": {
+        "id": "msg-0",
+        "author": {
+          "role": "user",
+          "name": null,
+          "metadata": {}
+        },
+        "create_time": 1743800000.0,
+        "content": {
+          "content_type": "text",
+          "parts": [
+            "Look into Yapword's founder and recent coverage, fast."
+          ]
+        },
+        "recipient": "all",
+        "metadata": {}
+      },
+      "parent": null,
+      "children": [
+        "node-1"
+      ]
+    },
+    "node-1": {
+      "id": "node-1",
+      "message": {
+        "id": "msg-1",
+        "author": {
+          "role": "assistant",
+          "name": null,
+          "metadata": {}
+        },
+        "create_time": 1743800005.0,
+        "content": {
+          "content_type": "text",
+          "parts": [
+            "fast|\"Yapword\" founder daily AI word game|30\nsearch|Yapword press coverage|\nfind|site:yapword.com press|14\nopen|https://yapword.com/press|\nfast|\"Yapword\" founder daily AI word game|30\nnotacommand|should be ignored|5\ngarbage line without pipe should be ignored"
+          ]
+        },
+        "recipient": "web.run",
+        "metadata": {}
+      },
+      "parent": "node-0",
+      "children": [
+        "node-2"
+      ]
+    },
+    "node-2": {
+      "id": "node-2",
+      "message": {
+        "id": "msg-2",
+        "author": {
+          "role": "tool",
+          "name": "web.run",
+          "metadata": {}
+        },
+        "create_time": 1743800010.0,
+        "content": {
+          "content_type": "text",
+          "parts": [
+            "results"
+          ]
+        },
+        "recipient": "assistant",
+        "metadata": {
+          "search_result_groups": [
+            {
+              "type": "search_result_group",
+              "domain": "duckduckgo.com",
+              "entries": [
+                {
+                  "url": "https://example.com/yapword-founder-profile",
+                  "title": "Yapword Founder Profile",
+                  "snippet": "..."
+                },
+                {
+                  "url": "https://yapword.com/press",
+                  "title": "Yapword Press Kit"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "parent": "node-1",
+      "children": [
+        "node-3"
+      ]
+    },
+    "node-3": {
+      "id": "node-3",
+      "message": {
+        "id": "msg-3",
+        "author": {
+          "role": "assistant",
+          "name": null,
+          "metadata": {}
+        },
+        "create_time": 1743800015.0,
+        "content": {
+          "content_type": "text",
+          "parts": [
+            "Here's what I found about Yapword's founder..."
+          ]
+        },
+        "recipient": "all",
+        "metadata": {}
+      },
+      "parent": "node-2",
+      "children": [
+        "node-4"
+      ]
+    },
+    "node-4": {
+      "id": "node-4",
+      "message": null,
+      "parent": "node-3",
+      "children": []
+    }
+  }
+}
