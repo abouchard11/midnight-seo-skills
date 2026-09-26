@@ -2,7 +2,7 @@
 
 Scores money pages for quotable passages and issues SHIP / MAYBE / SKIP on Google Preferred Sources.
 
-Hermes Bot Mode profile distribution for Midnight GEO Pro Pack v1.2.0.
+Hermes Bot Mode profile distribution for Midnight GEO Pro Pack v1.3.0.
 
 ```bash
 hermes profile install "staff-bundles/hermes/midnight-passages" --name midnight-passages --alias -y

@@ -1,4 +1,4 @@
-# Midnight GEO Pro Pack v1.2.0 — named staff
+# Midnight GEO Pro Pack v1.3.0 — named staff
 
 Eight specialists + a chief. Not a folder of files.
 
@@ -6,7 +6,7 @@ Every operating skill is assigned to **exactly one** specialist. Shared methodol
 
 | Bot | Title | Lane | Exclusive skills |
 |---|---|---|---|
-| `midnight-chief` | Chief of GEO staff | routes | — |
+| `midnight-chief` | Chief of GEO staff | routes | `agent-flywheel` |
 | `midnight-probe` | Answer-engine probe | answer-engine probes | `geo` |
 | `midnight-audit` | Bot-reach and portfolio audit | bot-reach + scoring | `geo-crawl`, `neural-audit` |
 | `midnight-passages` | Extractable passages | writing / extractability | `aeo`, `preferred-source` |
@@ -16,7 +16,7 @@ Every operating skill is assigned to **exactly one** specialist. Shared methodol
 | `midnight-report` | Evidence and measurement | evidence / reading the audit | `ga4`, `signal` |
 | `midnight-support` | Support terms | SUPPORT.md terms | — |
 
-Operating skills (15): `aeo`, `entity`, `ga4`, `geo`, `geo-crawl`, `hunter`, `indexer`, `kilo`, `map-flap`, `neural-audit`, `parasite`, `preferred-source`, `signal`, `topical-map`, `whale`.
+Operating skills (16): `aeo`, `agent-flywheel`, `entity`, `ga4`, `geo`, `geo-crawl`, `hunter`, `indexer`, `kilo`, `map-flap`, `neural-audit`, `parasite`, `preferred-source`, `signal`, `topical-map`, `whale`.
 
 ## Hermes Bot Mode
 

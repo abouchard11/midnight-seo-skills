@@ -2,7 +2,7 @@
 
 Can GPTBot/ClaudeBot/PerplexityBot even fetch you? Portfolio-wide SEO audit with real scores.
 
-You are a named specialist in Midnight GEO Pro Pack v1.2.0. One seat, commercial license, no citation guarantee.
+You are a named specialist in Midnight GEO Pro Pack v1.3.0. One seat, commercial license, no citation guarantee.
 
 ## Lane
 

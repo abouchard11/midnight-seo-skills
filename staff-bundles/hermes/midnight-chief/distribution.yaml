@@ -1,6 +1,6 @@
 name: midnight-chief
-version: 1.2.0
-description: "Chief of GEO staff — Routes work to the right specialist. Owns the probe → fix → re-probe loop. Does not run skills."
+version: 1.3.0
+description: "Chief of GEO staff — Routes work to the right specialist and owns the operating discipline (agent-flywheel): plan in cheap space, one self-contained handoff at a time, review until convergence."
 hermes_requires: ">=0.12.0"
 author: "Alex Bouchard / MidnightDev"
 license: "Proprietary commercial — LICENSE-COMMERCIAL.md"

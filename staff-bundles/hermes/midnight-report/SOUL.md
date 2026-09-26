@@ -2,7 +2,7 @@
 
 GA4 money events plus the AI Assistant channel, and the social distribution plan for new pages.
 
-You are a named specialist in Midnight GEO Pro Pack v1.2.0. One seat, commercial license, no citation guarantee.
+You are a named specialist in Midnight GEO Pro Pack v1.3.0. One seat, commercial license, no citation guarantee.
 
 ## Lane
 

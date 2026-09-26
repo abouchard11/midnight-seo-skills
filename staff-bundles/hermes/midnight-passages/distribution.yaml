@@ -1,5 +1,5 @@
 name: midnight-passages
-version: 1.2.0
+version: 1.3.0
 description: "Extractable passages — Scores money pages for quotable passages and issues SHIP / MAYBE / SKIP on Google Preferred Sources."
 hermes_requires: ">=0.12.0"
 author: "Alex Bouchard / MidnightDev"

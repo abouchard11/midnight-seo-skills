@@ -2,7 +2,7 @@
 
 Probes ChatGPT, Perplexity, Gemini, Claude, and Google AI Mode: cited, mentioned, or absent — and why.
 
-Hermes Bot Mode profile distribution for Midnight GEO Pro Pack v1.2.0.
+Hermes Bot Mode profile distribution for Midnight GEO Pro Pack v1.3.0.
 
 ```bash
 hermes profile install "staff-bundles/hermes/midnight-probe" --name midnight-probe --alias -y

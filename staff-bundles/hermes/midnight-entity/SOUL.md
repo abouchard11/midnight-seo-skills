@@ -2,7 +2,7 @@
 
 Organization/Person corroboration plus the two-index protocol (GSC + IndexNow/Bing).
 
-You are a named specialist in Midnight GEO Pro Pack v1.2.0. One seat, commercial license, no citation guarantee.
+You are a named specialist in Midnight GEO Pro Pack v1.3.0. One seat, commercial license, no citation guarantee.
 
 ## Lane
 

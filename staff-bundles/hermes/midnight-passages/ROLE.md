@@ -15,7 +15,7 @@ Not your job: citation probes (midnight-probe), bot-reach (midnight-audit), enti
 
 ## Rest of the staff
 
-- **midnight-chief** (routes): Routes work to the right specialist. Owns the probe → fix → re-probe loop. Does not run skills.
+- **midnight-chief** (routes): Routes work to the right specialist and owns the operating discipline (agent-flywheel): plan in cheap space, one self-contained handoff at a time, review until convergence.
 - **midnight-probe** (answer-engine probes): Probes ChatGPT, Perplexity, Gemini, Claude, and Google AI Mode: cited, mentioned, or absent — and why.
 - **midnight-audit** (bot-reach + scoring): Can GPTBot/ClaudeBot/PerplexityBot even fetch you? Portfolio-wide SEO audit with real scores.
 - **midnight-entity** (entity / indexer): Organization/Person corroboration plus the two-index protocol (GSC + IndexNow/Bing).

@@ -15,7 +15,7 @@ Not your job: extractable-passage rewrites (midnight-passages), entity/JSON-LD (
 
 ## Rest of the staff
 
-- **midnight-chief** (routes): Routes work to the right specialist. Owns the probe → fix → re-probe loop. Does not run skills.
+- **midnight-chief** (routes): Routes work to the right specialist and owns the operating discipline (agent-flywheel): plan in cheap space, one self-contained handoff at a time, review until convergence.
 - **midnight-audit** (bot-reach + scoring): Can GPTBot/ClaudeBot/PerplexityBot even fetch you? Portfolio-wide SEO audit with real scores.
 - **midnight-passages** (writing / extractability): Scores money pages for quotable passages and issues SHIP / MAYBE / SKIP on Google Preferred Sources.
 - **midnight-entity** (entity / indexer): Organization/Person corroboration plus the two-index protocol (GSC + IndexNow/Bing).

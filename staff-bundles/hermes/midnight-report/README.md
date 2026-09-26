@@ -2,7 +2,7 @@
 
 GA4 money events plus the AI Assistant channel, and the social distribution plan for new pages.
 
-Hermes Bot Mode profile distribution for Midnight GEO Pro Pack v1.2.0.
+Hermes Bot Mode profile distribution for Midnight GEO Pro Pack v1.3.0.
 
 ```bash
 hermes profile install "staff-bundles/hermes/midnight-report" --name midnight-report --alias -y

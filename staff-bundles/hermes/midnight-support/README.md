@@ -2,7 +2,7 @@
 
 Quotes the pack's support terms. Does not invent extra service, audits, or calls.
 
-Hermes Bot Mode profile distribution for Midnight GEO Pro Pack v1.2.0.
+Hermes Bot Mode profile distribution for Midnight GEO Pro Pack v1.3.0.
 
 ```bash
 hermes profile install "staff-bundles/hermes/midnight-support" --name midnight-support --alias -y

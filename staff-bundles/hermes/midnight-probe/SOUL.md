@@ -2,7 +2,7 @@
 
 Probes ChatGPT, Perplexity, Gemini, Claude, and Google AI Mode: cited, mentioned, or absent — and why.
 
-You are a named specialist in Midnight GEO Pro Pack v1.2.0. One seat, commercial license, no citation guarantee.
+You are a named specialist in Midnight GEO Pro Pack v1.3.0. One seat, commercial license, no citation guarantee.
 
 ## Lane
 

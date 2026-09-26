@@ -6,7 +6,7 @@
  * specialists (Hermes profile distributions + Grok Bot static cards), not any
  * third-party source code.
  *
- * Input:  skills/<name>/SKILL.md in this repo (the 15 operating skills).
+ * Input:  skills/<name>/SKILL.md in this repo (the 16 operating skills).
  * Output: staff-bundles/ — 8 specialists + a chief. Every skill is assigned
  *         to exactly one specialist. seo-references is shared methodology,
  *         copied into skill-bearing bundles, never counted as a 16th skill.
@@ -30,26 +30,28 @@ import { dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
-const VERSION = "1.2.0";
+const VERSION = "1.3.0";
 const PACK = "Midnight GEO Pro Pack";
 const AUTHOR = "Alex Bouchard / MidnightDev";
 const LICENSE = "Proprietary commercial — LICENSE-COMMERCIAL.md";
 const SUPPORT_EMAIL = "support@midnightdev.dev";
 const HERMES_REQUIRES = ">=0.12.0";
 
-/** Eight specialists + a chief. Skills listed here must cover the 15 SKILL.md files exactly once. */
+/** Eight specialists + a chief. Skills listed here must cover the 16 SKILL.md files exactly once. */
 const ROSTER = [
   {
     id: "midnight-chief",
     title: "Chief of GEO staff",
     lane: "routes",
-    skills: [],
+    skills: ["agent-flywheel"],
     kind: "chief",
     one_liner:
-      "Routes work to the right specialist. Owns the probe → fix → re-probe loop. Does not run skills.",
+      "Routes work to the right specialist and owns the operating discipline (agent-flywheel): plan in cheap space, one self-contained handoff at a time, review until convergence.",
     role: `You are midnight-chief, the routing seat for ${PACK} v${VERSION}.
 
-You do not run GEO skills. You decide who does, in this order:
+You do not run GEO skills. Your one skill, agent-flywheel, is your operating discipline — not a GEO playbook: it governs HOW you decompose, hand off, and converge, never what to claim.
+
+You decide who executes, in this order:
 
 1. Bot-reach unknown or suspected block → midnight-audit (/geo-crawl first).
 2. Need a citation/mention probe across ChatGPT, Perplexity, Gemini, Claude, AI Mode → midnight-probe (/geo).
@@ -477,7 +479,7 @@ function grokEnableLists(roster) {
     .join("\n");
   return `# Grok enable lists — ${PACK} v${VERSION}
 
-After creating each bot from \`bot-cards.md\`, enable only that bot's exclusive skills. Do not enable all 15 on every bot — the point of staff is a lane.
+After creating each bot from \`bot-cards.md\`, enable only that bot's exclusive skills. Do not enable all 16 on every bot — the point of staff is a lane.
 
 Shared methodology (\`seo-references\`) should be readable by any skill-bearing bot if your host has a shared-skill slot; it is not an exclusive assignment.
 
@@ -581,8 +583,8 @@ function verifyOutput(outRoot, roster, operating) {
 
 function generate(root, outRoot) {
   const operating = listOperatingSkills(root);
-  if (operating.length !== 15) {
-    throw new Error(`expected 15 operating skills, found ${operating.length}: ${operating.join(",")}`);
+  if (operating.length !== 16) {
+    throw new Error(`expected 16 operating skills, found ${operating.length}: ${operating.join(",")}`);
   }
   assertExactlyOnce(operating, ROSTER);
   rmSync(outRoot, { recursive: true, force: true });

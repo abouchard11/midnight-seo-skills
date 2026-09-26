@@ -1,4 +1,4 @@
-# Grok Bot setup checklist — Midnight GEO Pro Pack v1.2.0
+# Grok Bot setup checklist — Midnight GEO Pro Pack v1.3.0
 
 Grok has no bulk import. Do this once per seat.
 

@@ -2,7 +2,7 @@
 
 Backlink gaps, executable outreach, and parasite placements on higher-authority hosts.
 
-Hermes Bot Mode profile distribution for Midnight GEO Pro Pack v1.2.0.
+Hermes Bot Mode profile distribution for Midnight GEO Pro Pack v1.3.0.
 
 ```bash
 hermes profile install "staff-bundles/hermes/midnight-acquire" --name midnight-acquire --alias -y

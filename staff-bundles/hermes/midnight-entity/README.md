@@ -2,7 +2,7 @@
 
 Organization/Person corroboration plus the two-index protocol (GSC + IndexNow/Bing).
 
-Hermes Bot Mode profile distribution for Midnight GEO Pro Pack v1.2.0.
+Hermes Bot Mode profile distribution for Midnight GEO Pro Pack v1.3.0.
 
 ```bash
 hermes profile install "staff-bundles/hermes/midnight-entity" --name midnight-entity --alias -y

@@ -2,7 +2,7 @@
 
 Can GPTBot/ClaudeBot/PerplexityBot even fetch you? Portfolio-wide SEO audit with real scores.
 
-Hermes Bot Mode profile distribution for Midnight GEO Pro Pack v1.2.0.
+Hermes Bot Mode profile distribution for Midnight GEO Pro Pack v1.3.0.
 
 ```bash
 hermes profile install "staff-bundles/hermes/midnight-audit" --name midnight-audit --alias -y
