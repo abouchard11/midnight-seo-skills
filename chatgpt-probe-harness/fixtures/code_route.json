@@ -1,0 +1,160 @@
+{
+  "title": "Code-route probe: Yapword competitor landscape",
+  "create_time": 1743900000.0,
+  "update_time": 1743900100.0,
+  "conversation_id": "d3333333-cccc-4ddd-8eee-333344445555",
+  "id": "d3333333-cccc-4ddd-8eee-333344445555",
+  "is_temporary_chat": true,
+  "current_node": "node-4",
+  "mapping": {
+    "node-0": {
+      "id": "node-0",
+      "message": {
+        "id": "msg-0",
+        "author": {
+          "role": "user",
+          "name": null,
+          "metadata": {}
+        },
+        "create_time": 1743900000.0,
+        "content": {
+          "content_type": "text",
+          "parts": [
+            "Who are Yapword's closest competitors?"
+          ]
+        },
+        "recipient": "all",
+        "metadata": {}
+      },
+      "parent": null,
+      "children": [
+        "node-1"
+      ]
+    },
+    "node-1": {
+      "id": "node-1",
+      "message": {
+        "id": "msg-1",
+        "author": {
+          "role": "assistant",
+          "name": null,
+          "metadata": {}
+        },
+        "create_time": 1743900005.0,
+        "content": {
+          "content_type": "code",
+          "language": "unknown",
+          "response_format_name": null,
+          "text": "search|Yapword competitor daily word games|30\nopen|https://example.com/yapword-review|"
+        },
+        "recipient": "web.run",
+        "metadata": {}
+      },
+      "parent": "node-0",
+      "children": [
+        "node-1x",
+        "node-2"
+      ]
+    },
+    "node-1x": {
+      "id": "node-1x",
+      "message": {
+        "id": "msg-1x",
+        "author": {
+          "role": "assistant",
+          "name": null,
+          "metadata": {}
+        },
+        "create_time": 1743900006.0,
+        "content": {
+          "content_type": "code",
+          "language": "unknown",
+          "response_format_name": null,
+          "text": "search|ABANDONED code query should not appear|30"
+        },
+        "recipient": "web.run",
+        "metadata": {
+          "search_queries": [
+            {
+              "type": "search",
+              "q": "ABANDONED metadata query should not appear"
+            }
+          ]
+        }
+      },
+      "parent": "node-1",
+      "children": []
+    },
+    "node-2": {
+      "id": "node-2",
+      "message": {
+        "id": "msg-2",
+        "author": {
+          "role": "tool",
+          "name": "web.run",
+          "metadata": {}
+        },
+        "create_time": 1743900010.0,
+        "content": {
+          "content_type": "text",
+          "parts": [
+            "Search results for Yapword competitors"
+          ]
+        },
+        "recipient": "assistant",
+        "metadata": {
+          "search_result_groups": [
+            {
+              "type": "search_result_group",
+              "domain": "example.com",
+              "entries": [
+                {
+                  "url": "https://example.com/yapword-review",
+                  "title": "Yapword Review vs Competitors"
+                },
+                {
+                  "url": "https://competitor.example.com/word-game",
+                  "title": "Competitor Word Game"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "parent": "node-1",
+      "children": [
+        "node-3"
+      ]
+    },
+    "node-3": {
+      "id": "node-3",
+      "message": {
+        "id": "msg-3",
+        "author": {
+          "role": "assistant",
+          "name": null,
+          "metadata": {}
+        },
+        "create_time": 1743900015.0,
+        "content": {
+          "content_type": "text",
+          "parts": [
+            "Here's a comparison of Yapword vs its competitors..."
+          ]
+        },
+        "recipient": "all",
+        "metadata": {}
+      },
+      "parent": "node-2",
+      "children": [
+        "node-4"
+      ]
+    },
+    "node-4": {
+      "id": "node-4",
+      "message": null,
+      "parent": "node-3",
+      "children": []
+    }
+  }
+}

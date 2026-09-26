@@ -1,16 +1,14 @@
 # Buyer journey — Midnight GEO Pro Pack ($99)
 
-No operator action is required after the listing is live.
+Storefront is launch posts + https://midnightdev.dev (not this private repo).
 
-1. Discover: https://github.com/abouchard11/midnight-seo-skills
-2. Click **Buy commercial license — $99** in the README (Stripe Payment Link).
-3. Pay on Stripe Checkout (card). Promo codes are off.
-4. Stripe emails a receipt to the checkout address. That receipt is the license.
-5. Stripe shows the hosted confirmation (or redirects here) with the download URL.
-6. Download `midnight-geo-pro-v1.0.0.zip` from
-   https://github.com/abouchard11/midnight-seo-skills/releases/latest
-7. Install per [INSTALL.md](INSTALL.md).
+1. Discover the pack on a launch post or midnightdev.dev.
+2. Pay $99 on the official Stripe Payment Link.
+3. Stripe emails a receipt to the checkout address. That receipt is the license.
+4. Alex (or an agent) emails `midnight-geo-pro-v1.1.0.zip`. The GitHub
+   release asset is private — buyers do not download it themselves.
+5. Install per [INSTALL.md](INSTALL.md). Support: [SUPPORT.md](../SUPPORT.md).
 
-Failed payment: Stripe declines; nothing is licensed; no email from us.
+Failed payment: Stripe declines; nothing is licensed; no zip.
 
 Refund / missing zip: alex@midnightdev.dev + receipt, 14 days.
