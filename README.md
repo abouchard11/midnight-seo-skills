@@ -4,6 +4,28 @@ Claude Code skill suite for running SEO operations across a portfolio of local-s
 
 Built and maintained by [Alex Bouchard](https://github.com/abouchard11) ([MidnightDev](https://midnightdev.dev)). Extracted from the skill set I run daily against my own portfolio; the working examples use Houston as the metro because that is where I operate. Swap in your own market via the configuration described below.
 
+## Commercial license — $99 one-time
+
+Public clone is **not** a license. `LICENSE` is proprietary: no commercial use, redistribution, or client work without a paid grant.
+
+**Midnight GEO Pro Pack** is the paid grant: 15 GEO/SEO skills + `seo-references` + the bundled `ai-citation-patterns` research + a single-seat commercial license.
+
+[**Buy commercial license — $99**](https://buy.stripe.com/test_eVq9AT3wX5S5b5I3k5eME00)
+
+After payment Stripe emails a receipt (that is the license) and redirects you to the GitHub release zip. No waiting on a human.
+
+Stripe **test mode** is live now (`test_` in the URL; card `4242…`). Production charges need one `stripe login` — [commercial/ALEX-GO-LIVE.md](commercial/ALEX-GO-LIVE.md). Do not pay with a real card until the URL loses `test_`.
+
+| | |
+|---|---|
+| Price | $99 USD, one-time, one seat |
+| Checkout | Stripe Payment Link (promo codes off) |
+| Fulfillment | automatic — [release zip](https://github.com/abouchard11/midnight-seo-skills/releases/latest) + [install notes](commercial/INSTALL.md) |
+| Terms | [LICENSE-COMMERCIAL.md](LICENSE-COMMERCIAL.md) |
+| Buyer path | [commercial/BUYER-JOURNEY.md](commercial/BUYER-JOURNEY.md) |
+
+A seat is one person. Extra practitioners = extra licenses. No ranking or citation guarantees.
+
 ## Skills
 
 | Skill | What it does |
@@ -62,4 +84,4 @@ Parts of the bottom-of-funnel approach were informed by Edward Sturm's publicly 
 
 ## Rights
 
-**Proprietary — all rights reserved. No license is granted.** See [LICENSE](LICENSE).
+**Proprietary — all rights reserved. No license is granted by viewing or cloning this repository.** See [LICENSE](LICENSE). Paid single-seat commercial use: [LICENSE-COMMERCIAL.md](LICENSE-COMMERCIAL.md) after a $99 Stripe purchase.
