@@ -27,6 +27,7 @@ work. An agency may buy one license per practitioner.
 4. The `operator-evidence/` worked-portfolio chapter as shipped in the pack.
 5. The `chatgpt-probe-harness/` extractor, fixtures, and protocol as shipped.
 6. `SUPPORT.md` (support terms only — not a service contract).
+7. `staff-bundles/` named-specialist projections (Hermes profile distributions and Grok Bot static cards) as shipped.
 
 ## Proof of license
 

@@ -1,0 +1,7 @@
+name: midnight-probe
+version: 1.2.0
+description: "Answer-engine probe — Probes ChatGPT, Perplexity, Gemini, Claude, and Google AI Mode: cited, mentioned, or absent — and why."
+hermes_requires: ">=0.12.0"
+author: "Alex Bouchard / MidnightDev"
+license: "Proprietary commercial — LICENSE-COMMERCIAL.md"
+env_requires: []

@@ -1,0 +1,7 @@
+name: midnight-acquire
+version: 1.2.0
+description: "Links and placements — Backlink gaps, executable outreach, and parasite placements on higher-authority hosts."
+hermes_requires: ">=0.12.0"
+author: "Alex Bouchard / MidnightDev"
+license: "Proprietary commercial — LICENSE-COMMERCIAL.md"
+env_requires: []
