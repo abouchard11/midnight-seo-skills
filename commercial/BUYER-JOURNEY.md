@@ -11,4 +11,4 @@ Storefront is launch posts + https://midnightdev.dev (not this private repo).
 
 Failed payment: Stripe declines; nothing is licensed; no zip.
 
-Refund / missing zip: alex@midnightdev.dev + receipt, 14 days.
+Refund / missing zip: support@midnightdev.dev + receipt, 14 days.

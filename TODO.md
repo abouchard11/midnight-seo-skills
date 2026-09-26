@@ -1,0 +1,1 @@
+- Replicate BuyLandFL SEO win pattern on next target site. Update playbook doc with what worked.

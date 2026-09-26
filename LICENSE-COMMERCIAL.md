@@ -56,7 +56,7 @@ stop.
 ## Refunds
 
 If the pack cannot be downloaded after a successful payment, email
-alex@midnightdev.dev with the Stripe receipt within 14 days for a refund or
+support@midnightdev.dev with the Stripe receipt within 14 days for a refund or
 re-delivery. No refund solely because search results did not move.
 
 ## As-is
@@ -69,4 +69,4 @@ LIABILITY ARISING FROM THE LICENSED MATERIALS.
 
 ## Contact
 
-Alex Bouchard — alex@midnightdev.dev — https://midnightdev.dev
+Alex Bouchard — support@midnightdev.dev — https://midnightdev.dev

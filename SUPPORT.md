@@ -1,12 +1,12 @@
 # Support — Midnight GEO Pro Pack
 
-Email: **alex@midnightdev.dev**
+Email: **support@midnightdev.dev**
 
 This is what a paid seat includes. Nothing else is implied.
 
 ## Included
 
-- **Email support** from alex@midnightdev.dev for questions on applying the
+- **Email support** from support@midnightdev.dev for questions on applying the
   skills in this pack to your own properties.
 - **One clarification round per buyer.** One thread, one round of answers
   after you have actually tried the skill. Not an ongoing retainer.
@@ -34,7 +34,7 @@ screenshot of the whole IDE. If the question is “how do I start,” read
 
 ## Updates
 
-When a new zip exists, email alex@midnightdev.dev with the original
+When a new zip exists, email support@midnightdev.dev with the original
 receipt and the version you have. Delivery is by email (the GitHub repo
 is private). The 12-month window does not extend the license grant in
 `LICENSE-COMMERCIAL.md`; it only covers pack-file updates.

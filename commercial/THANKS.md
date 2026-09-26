@@ -12,7 +12,7 @@ License terms: [LICENSE-COMMERCIAL.md](../LICENSE-COMMERCIAL.md).
 
 ## If the zip is missing or the charge looks wrong
 
-Email alex@midnightdev.dev with the Stripe receipt. Do not re-pay until you hear back.
+Email support@midnightdev.dev with the Stripe receipt. Do not re-pay until you hear back.
 
 ## What you did not buy
 
