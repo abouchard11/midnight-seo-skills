@@ -8,7 +8,7 @@ Built and maintained by [Alex Bouchard](https://github.com/abouchard11) ([Midnig
 
 Public clone is **not** a license. `LICENSE` is proprietary: no commercial use, redistribution, or client work without a paid grant.
 
-**Midnight GEO Pro Pack** is the paid grant: 15 GEO/SEO skills + `seo-references` + the bundled `ai-citation-patterns` research + a single-seat commercial license.
+**Midnight GEO Pro Pack** is the paid grant: 15 GEO/SEO skills + `seo-references` + the bundled `ai-citation-patterns` research + named staff bundles (eight specialists + a chief, Hermes / Grok) + a single-seat commercial license.
 
 [**Buy commercial license — $99**](https://buy.stripe.com/test_eVq9AT3wX5S5b5I3k5eME00)
 

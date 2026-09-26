@@ -6,7 +6,7 @@ access is not a license. Terms: [LICENSE-COMMERCIAL.md](../LICENSE-COMMERCIAL.md
 The zip layout:
 
 ```
-midnight-geo-pro-v1.1.0/
+midnight-geo-pro-v1.2.0/
   LICENSE
   LICENSE-COMMERCIAL.md
   README.md
@@ -17,6 +17,7 @@ midnight-geo-pro-v1.1.0/
   research/ai-citation-patterns/
   operator-evidence/
   chatgpt-probe-harness/
+  staff-bundles/
 ```
 
 ## Claude Code
@@ -41,6 +42,28 @@ cp -R skills/* ~/.hermes/profiles/<profile>/skills/
 
 Then `hermes skills list` (or the profile equivalent) and confirm the GEO skills
 are enabled.
+
+## Named staff — Hermes Bot Mode and Grok Bot (v1.2)
+
+The pack also installs as eight specialists + a chief, not only a folder of
+skill files. Roster and host steps: `staff-bundles/STAFF.md`.
+
+Hermes (each `staff-bundles/hermes/<bot>/` is a profile distribution):
+
+```bash
+for d in staff-bundles/hermes/midnight-*; do
+  hermes profile install "$d" --name "$(basename "$d")" --alias -y
+done
+```
+
+Then `hermes -p midnight-chief setup`. Open the Bots tab — each profile is a Bot.
+
+Grok: semi-manual. Create bots from `staff-bundles/grok/bot-cards.md`, enable
+`staff-bundles/grok/enable-lists.md`, follow
+`staff-bundles/grok/setup-checklist.md`. No bulk import.
+
+Every operating skill is assigned to exactly one specialist. This is still
+playbooks, not a citation guarantee.
 
 ## Citation research
 

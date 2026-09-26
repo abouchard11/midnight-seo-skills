@@ -1,0 +1,7 @@
+name: midnight-map
+version: 1.2.0
+description: "Topical maps and local pack — 13-page architecture per domain, Google Map Pack for local sub-markets, and new-domain discovery."
+hermes_requires: ">=0.12.0"
+author: "Alex Bouchard / MidnightDev"
+license: "Proprietary commercial — LICENSE-COMMERCIAL.md"
+env_requires: []

@@ -1,0 +1,7 @@
+name: midnight-entity
+version: 1.2.0
+description: "Entity and indexer — Organization/Person corroboration plus the two-index protocol (GSC + IndexNow/Bing)."
+hermes_requires: ">=0.12.0"
+author: "Alex Bouchard / MidnightDev"
+license: "Proprietary commercial — LICENSE-COMMERCIAL.md"
+env_requires: []

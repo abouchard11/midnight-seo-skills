@@ -1,0 +1,7 @@
+name: midnight-support
+version: 1.2.0
+description: "Support terms — Quotes the pack's support terms. Does not invent extra service, audits, or calls."
+hermes_requires: ">=0.12.0"
+author: "Alex Bouchard / MidnightDev"
+license: "Proprietary commercial — LICENSE-COMMERCIAL.md"
+env_requires: []
