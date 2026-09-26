@@ -1,0 +1,29 @@
+# Alex — go live (under 2 minutes)
+
+The pack, license, README, GitHub release, and Stripe **test** Payment Link
+already exist. Real money needs live Stripe keys. The CLI currently has
+sandbox keys only (`Live mode key: not available`).
+
+## Click-by-click
+
+1. Terminal: `stripe login`
+2. Browser: approve the Stripe CLI for the **live** MidnightDev account
+   (`acct_1SEM05F4AnhghO8O`, alex11bouchard@gmail.com).
+3. Terminal:
+   `bash commercial/scripts/create-live-payment-link.sh`
+4. Copy the printed `LIVE_URL` (`https://buy.stripe.com/...` — no `test_`).
+5. Replace the checkout URL in `README.md` (the Buy button) with `LIVE_URL`.
+6. Commit + push to `main`. Done.
+
+Do not paste API keys anywhere. Do not turn promo codes on.
+
+## What you do not do
+
+- You do not email the zip. GitHub release is the download.
+- You do not create Gumroad/LemonSqueezy.
+- You do not refund from chat; Stripe dashboard if needed.
+
+## Test (already works, no login)
+
+https://buy.stripe.com/test_eVq9AT3wX5S5b5I3k5eME00
+Card 4242… — see [TEST-CHECKOUT.md](TEST-CHECKOUT.md).
