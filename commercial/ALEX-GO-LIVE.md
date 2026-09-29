@@ -1,3 +1,9 @@
+> **STATUS: DONE (2026-09-27).** Live mode is active on `acct_1SEM05F4AnhghO8O`.
+> Live product `prod_VKQMJ9gLUnevmE`, live price `price_1UJlVcF4AnhghO8OyZcShddd` ($99 one-time),
+> live link `plink_1UJlWeF4AnhghO8OjmgTjtZb` -> https://buy.stripe.com/00w28r4Ei8lLdH8bYY08g04
+> (wired into the site's BUY_URL). Payment redirects to the GitHub release.
+> Steps below are kept as the record of what was done.
+
 # Alex — go live (under 2 minutes)
 
 The pack, license, README, GitHub release, and Stripe **test** Payment Link

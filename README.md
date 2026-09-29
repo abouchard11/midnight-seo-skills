@@ -14,7 +14,7 @@ Public clone is **not** a license. `LICENSE` is proprietary: no commercial use, 
 
 After payment Stripe emails a receipt (that is the license) and redirects you to the GitHub release zip. No waiting on a human.
 
-Stripe **test mode** is live now (`test_` in the URL; card `4242…`). Production charges need one `stripe login` — [commercial/ALEX-GO-LIVE.md](commercial/ALEX-GO-LIVE.md). Do not pay with a real card until the URL loses `test_`.
+Checkout is **live** — real payments accepted, card charged on completion. The Stripe receipt is the license; the download follows from the GitHub release.
 
 | | |
 |---|---|
