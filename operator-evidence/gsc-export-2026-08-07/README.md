@@ -104,11 +104,11 @@ These surfaced while running the export and are worth acting on separately:
 | **New unmapped property** | `sc-domain:jonesactcalculator.com` now exists and returns byte-identical data to the mapped `https://www.jonesactcalculator.com/`. The map says "do NOT flip" to domain format — still true operationally, but the duplicate should be recorded so it isn't double-counted. |
 | **New unmapped property** | `sc-domain:ultramethyleneblue.com` exists in the account, zero data, no group_id, not in the map. |
 | **Map is stale** | Map says htxfoundationfix is "NOT YET IN GSC — needs DNS verification". It **is** verified (`siteFullUser`) and has been collecting impressions since 2026-08-01. |
-| **Access regression** | `stackdworkforce.com` is now `siteUnverifiedUser` → 403. Map records it as "verified 2026-04-30". Access was lost at some point. |
+| **Access regression** | One client property (name withheld) is now `siteUnverifiedUser` → 403. Map records it as "verified 2026-04-30". Access was lost at some point. |
 | **Access regression** | `sc-domain:htxaccidentattorney.com` is `siteUnverifiedUser` → 403. Map lists it as a normal domain property. |
 | **Still unverified** | `abogadosinmigracionhtx.com` → 403, consistent with the map's "pending DNS TXT verification" note. |
 | **Retired properties still present** | `sc-domain:semantix.live` and `https://semantix.live/` both return zero data. Map says "keep until retired" — they are now fully dark. |
 
-Three properties (htxaccidentattorney, stackdworkforce, abogadosinmigracionhtx) could **not** be
+Three properties (htxaccidentattorney, one client property with its name withheld, abogadosinmigracionhtx) could **not** be
 exported — the service account lacks permission. Their rows in `portfolio-summary.csv` are marked
 `403-no-permission` with blank metrics rather than zeros, so they aren't mistaken for dead sites.

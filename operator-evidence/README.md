@@ -105,7 +105,7 @@ volume, the pattern that works.
 2. Probe UAs are spoofed from one IP. A WAF that checks published bot
    ranges may disagree with the probe in either direction.
 3. Three GSC properties returned 403 (no permission) and are blank, not
-   zero: htxaccidentattorney, stackdworkforce, abogadosinmigracionhtx.
+   zero: htxaccidentattorney, one client property (name withheld), abogadosinmigracionhtx.
 4. Placeholders (htxaccidentattorney, htxcommercialroofers) scoring 70
    is expected CSR_SHELL, not a surprise outage.
 
